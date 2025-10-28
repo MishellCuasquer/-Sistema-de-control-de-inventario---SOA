@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Artículo - Sistema de Inventario</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .nav {
+            background: #f8f9fa;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1em;
+        }
+
+        .nav a:hover {
+            color: #764ba2;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .detail-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .detail-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            padding: 15px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .detail-value {
+            color: #212529;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .badge-warning {
+            background: #ffc107;
+            color: #000;
+        }
+
+        .badge-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .stat-box h3 {
+            color: #6c757d;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .stat-box .value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .btn-warning {
+            background: #ffc107;
+            color: #000;
+        }
+
+        .btn-warning:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+        .alert-box {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 4px solid #ffc107;
+        }
+
+        @media (max-width: 768px) {
+            .detail-row {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>📋 Detalle del Artículo</h1>
+        <p th:text="${articulo.nombre}">Nombre del Artículo</p>
+    </div>
+
+    <nav class="nav">
+        <a th:href="@{/}">← Volver al listado</a>
+        <a th:href="@{/editar/{id}(id=${articulo.id})}">✏️ Editar</a>
+    </nav>
+
+    <div class="content">
+        <!-- Alerta de stock bajo -->
+        <div class="alert-box alert-warning" th:if="${articulo.tieneStockBajo()}">
+            <strong>⚠️ ALERTA DE STOCK BAJO</strong><br>
+            El stock actual (<span th:text="${articulo.stockActual}"></span>) es menor al stock mínimo
+            (<span th:text="${articulo.stockMinimo}"></span>). Se recomienda reabastecer.
+        </div>
+
+        <!-- Información básica -->
+        <div class="detail-card">
+            <h2>📦 Información General</h2>
+
+            <div class="detail-row">
+                <div class="detail-label">Código:</div>
+                <div class="detail-value"><strong th:text="${articulo.codigo}"></strong></div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Nombre:</div>
+                <div class="detail-value" th:text="${articulo.nombre}"></div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Descripción:</div>
+                <div class="detail-value" th:text="${articulo.descripcion != null ? articulo.descripcion : 'Sin descripción'}"></div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Categoría:</div>
+                <div class="detail-value" th:text="${articulo.categoria}"></div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Proveedor:</div>
+                <div class="detail-value" th:text="${articulo.proveedor != null ? articulo.proveedor : 'No especificado'}"></div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Estado:</div>
+                <div class="detail-value">
+                    <span th:if="${articulo.activo}" class="badge badge-success">✓ Activo</span>
+                    <span th:unless="${articulo.activo}" class="badge badge-danger">✗ Inactivo</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Información de precios -->
+        <div class="detail-card">
+            <h2>💰 Información de Precios</h2>
+
+            <div class="detail-row">
+                <div class="detail-label">Precio de Compra:</div>
+                <div class="detail-value">$<span th:text="${#numbers.formatDecimal(articulo.precioCompra, 1, 2)}"></span></div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Precio de Venta:</div>
+                <div class="detail-value">$<span th:text="${#numbers.formatDecimal(articulo.precioVenta, 1, 2)}"></span></div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Margen de Ganancia:</div>
+                <div class="detail-value">
+                    <span th:text="${#numbers.formatDecimal(articulo.calcularMargenGanancia(), 1, 2)}"></span>%
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Ganancia por Unidad:</div>
+                <div class="detail-value">$<span th:text="${#numbers.formatDecimal(articulo.precioVenta.subtract(articulo.precioCompra), 1, 2)}"></span></div>
+            </div>
+        </div>
+
+        <!-- Información de stock -->
+        <div class="detail-card">
+            <h2>📊 Información de Inventario</h2>
+
+            <div class="detail-row">
+                <div class="detail-label">Stock Actual:</div>
+                <div class="detail-value">
+                    <strong th:text="${articulo.stockActual}"></strong> unidades
+                    <span th:if="${articulo.tieneStockBajo()}" class="badge badge-warning">⚠️ Bajo</span>
+                    <span th:if="${!articulo.tieneStockBajo()}" class="badge badge-success">✓ OK</span>
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Stock Mínimo:</div>
+                <div class="detail-value"><span th:text="${articulo.stockMinimo}"></span> unidades</div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Valor del Inventario:</div>
+                <div class="detail-value">$<span th:text="${#numbers.formatDecimal(articulo.calcularValorInventario(), 1, 2)}"></span></div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Ganancia Potencial:</div>
+                <div class="detail-value">$<span th:text="${#numbers.formatDecimal(articulo.precioVenta.subtract(articulo.precioCompra).multiply(T(java.math.BigDecimal).valueOf(articulo.stockActual)), 1, 2)}"></span></div>
+            </div>
+        </div>
+
+        <!-- Estadísticas visuales -->
+        <div class="stats-grid">
+            <div class="stat-box">
+                <h3>Stock Disponible</h3>
+                <div class="value" th:text="${articulo.stockActual}">0</div>
+            </div>
+
+            <div class="stat-box">
+                <h3>Margen %</h3>
+                <div class="value" th:text="${#numbers.formatDecimal(articulo.calcularMargenGanancia(), 1, 1)} + '%'">0%</div>
+            </div>
+
+            <div class="stat-box">
+                <h3>Valor Total</h3>
+                <div class="value">$<span th:text="${#numbers.formatDecimal(articulo.calcularValorInventario(), 1, 0)}">0</span></div>
+            </div>
+        </div>
+
+        <!-- Información de fechas -->
+        <div class="detail-card">
+            <h2>📅 Información de Registro</h2>
+
+            <div class="detail-row">
+                <div class="detail-label">Fecha de Registro:</div>
+                <div class="detail-value" th:text="${#temporals.format(articulo.fechaRegistro, 'dd/MM/yyyy HH:mm:ss')}"></div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">Última Actualización:</div>
+                <div class="detail-value" th:text="${#temporals.format(articulo.fechaActualizacion, 'dd/MM/yyyy HH:mm:ss')}"></div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">ID del Sistema:</div>
+                <div class="detail-value" th:text="${articulo.id}"></div>
+            </div>
+        </div>
+
+        <!-- Acciones -->
+        <div class="actions">
+            <a th:href="@{/editar/{id}(id=${articulo.id})}" class="btn btn-warning">✏️ Editar Artículo</a>
+            <a th:href="@{/}" class="btn btn-primary">← Volver al Listado</a>
+            <form th:action="@{/eliminar/{id}(id=${articulo.id})}" method="post" style="margin: 0;">
+                <button type="submit" class="btn btn-danger"
+                        onclick="return confirm('¿Está seguro de eliminar este artículo?')">
+                    🗑️ Eliminar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar Artículos - Sistema de Inventario</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .nav {
+            background: #f8f9fa;
+            padding: 15px 30px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1em;
+        }
+
+        .nav a:hover {
+            color: #764ba2;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .search-form {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 15px;
+            align-items: end;
+        }
+
+        .form-group {
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .results-info {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            font-weight: 600;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .badge-warning {
+            background: #ffc107;
+            color: #000;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }
+
+        .empty-state h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🔍 Consultar Artículos</h1>
+        <p>Busque artículos por código, nombre o categoría</p>
+    </div>
+
+    <nav class="nav">
+        <a th:href="@{/}">← Volver al listado</a>
+    </nav>
+
+    <div class="content">
+        <!-- Formulario de búsqueda -->
+        <div class="search-form">
+            <form th:action="@{/buscar}" method="get">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="criterio">Buscar por Código o Nombre</label>
+                        <input type="text" id="criterio" name="criterio"
+                               th:value="${criterio}"
+                               placeholder="Ingrese código o nombre del artículo">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categoria">Filtrar por Categoría</label>
+                        <select id="categoria" name="categoria">
+                            <option value="">Todas las categorías</option>
+                            <option th:each="cat : ${categorias}"
+                                    th:value="${cat}"
+                                    th:text="${cat}"
+                                    th:selected="${cat == categoria}"></option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn">🔍 Buscar</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Información de resultados -->
+        <div class="results-info" th:if="${articulos != null}">
+            📊 Se encontraron <strong th:text="${totalResultados}">0</strong> artículo(s)
+            <span th:if="${criterio != null and !criterio.isEmpty()}">
+                    con el criterio "<strong th:text="${criterio}"></strong>"
+                </span>
+            <span th:if="${categoria != null and !categoria.isEmpty()}">
+                    en la categoría "<strong th:text="${categoria}"></strong>"
+                </span>
+        </div>
+
+        <!-- Tabla de resultados -->
+        <div class="table-container" th:if="${articulos != null and !articulos.isEmpty()}">
+            <table>
+                <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Precio Compra</th>
+                    <th>Precio Venta</th>
+                    <th>Stock</th>
+                    <th>Proveedor</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="articulo : ${articulos}">
+                    <td><strong th:text="${articulo.codigo}"></strong></td>
+                    <td th:text="${articulo.nombre}"></td>
+                    <td th:text="${articulo.categoria}"></td>
+                    <td>$<span th:text="${#numbers.formatDecimal(articulo.precioCompra, 1, 2)}"></span></td>
+                    <td>$<span th:text="${#numbers.formatDecimal(articulo.precioVenta, 1, 2)}"></span></td>
+                    <td>
+                        <span th:text="${articulo.stockActual}"></span>
+                        <span th:if="${articulo.tieneStockBajo()}" class="badge badge-warning">⚠️ Bajo</span>
+                        <span th:if="${!articulo.tieneStockBajo()}" class="badge badge-success">✓ OK</span>
+                    </td>
+                    <td th:text="${articulo.proveedor != null ? articulo.proveedor : '-'}"></td>
+                    <td>
+                        <span th:if="${articulo.activo}" class="badge badge-success">Activo</span>
+                    </td>
+                    <td>
+                        <a th:href="@{/articulo/{id}(id=${articulo.id})}" class="btn btn-small">Ver Detalle</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Estado vacío -->
+        <div class="empty-state" th:if="${articulos != null and articulos.isEmpty()}">
+            <h3>🔍 No se encontraron resultados</h3>
+            <p>Intente con otros criterios de búsqueda</p>
+        </div>
+
+        <div class="empty-state" th:if="${articulos == null}">
+            <h3>🔍 Realice una búsqueda</h3>
+            <p>Utilice el formulario superior para buscar artículos</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,963 @@
+2025-10-26T14:13:18.682-05:00  INFO 5216 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 5216 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T14:13:18.687-05:00  INFO 5216 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T14:13:19.947-05:00  INFO 5216 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T14:13:19.970-05:00  INFO 5216 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 0 JPA repository interfaces.
+2025-10-26T14:13:20.879-05:00  INFO 5216 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T14:13:20.888-05:00  INFO 5216 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T14:13:20.888-05:00  INFO 5216 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T14:13:20.961-05:00  INFO 5216 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T14:13:20.961-05:00  INFO 5216 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2216 ms
+2025-10-26T14:13:21.200-05:00  INFO 5216 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T14:13:22.311-05:00 ERROR 5216 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:na]
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:160) ~[spring-jdbc-6.0.13.jar:6.0.13]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:118) ~[spring-jdbc-6.0.13.jar:6.0.13]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:81) ~[spring-jdbc-6.0.13.jar:6.0.13]
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:332) ~[spring-jdbc-6.0.13.jar:6.0.13]
+	at org.springframework.boot.jdbc.EmbeddedDatabaseConnection.isEmbedded(EmbeddedDatabaseConnection.java:168) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.isEmbeddedDatabase(DataSourceScriptDatabaseInitializer.java:67) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.isEnabled(AbstractScriptDatabaseInitializer.java:84) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:107) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applySchemaScripts(AbstractScriptDatabaseInitializer.java:98) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:76) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:66) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1817) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:312) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1166) ~[spring-context-6.0.13.jar:6.0.13]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:940) ~[spring-context-6.0.13.jar:6.0.13]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:616) ~[spring-context-6.0.13.jar:6.0.13]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:738) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:440) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) ~[spring-boot-3.1.5.jar:3.1.5]
+	at com.ferreteria.ferreteria_inventario.FerreteriaInventarioApplication.main(FerreteriaInventarioApplication.java:10) ~[classes/:na]
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[na:na]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:121) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	... 41 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:752) ~[na:na]
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	... 44 common frames omitted
+
+2025-10-26T14:13:22.376-05:00  INFO 5216 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T14:13:22.425-05:00  INFO 5216 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T14:13:22.427-05:00  INFO 5216 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T14:13:22.796-05:00  INFO 5216 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T14:13:22.840-05:00  INFO 5216 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T14:13:23.845-05:00 ERROR 5216 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:175) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:825) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:446) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:239) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:188) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:437) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:279) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:193) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:69) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:119) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:264) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:239) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:216) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:231) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:199) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:169) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1383) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1454) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.0.13.jar:6.0.13]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376) ~[spring-orm-6.0.13.jar:6.0.13]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.13.jar:6.0.13]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.13.jar:6.0.13]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352) ~[spring-orm-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1817) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1166) ~[spring-context-6.0.13.jar:6.0.13]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:940) ~[spring-context-6.0.13.jar:6.0.13]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:616) ~[spring-context-6.0.13.jar:6.0.13]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:738) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:440) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) ~[spring-boot-3.1.5.jar:3.1.5]
+	at com.ferreteria.ferreteria_inventario.FerreteriaInventarioApplication.main(FerreteriaInventarioApplication.java:10) ~[classes/:na]
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[na:na]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:166) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:121) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:945) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	... 49 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:752) ~[na:na]
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63) ~[mysql-connector-j-8.0.33.jar:8.0.33]
+	... 52 common frames omitted
+
+2025-10-26T14:13:23.847-05:00  WARN 5216 --- [main] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+
+java.lang.NullPointerException: Cannot invoke "org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(java.sql.SQLException, String)" because the return value of "org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.sqlExceptionHelper()" is null
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:279) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:193) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:69) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:119) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:264) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:239) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:216) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:231) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:199) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:169) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1383) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1454) ~[hibernate-core-6.2.13.Final.jar:6.2.13.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.0.13.jar:6.0.13]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376) ~[spring-orm-6.0.13.jar:6.0.13]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.0.13.jar:6.0.13]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.0.13.jar:6.0.13]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352) ~[spring-orm-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1817) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.0.13.jar:6.0.13]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1166) ~[spring-context-6.0.13.jar:6.0.13]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:940) ~[spring-context-6.0.13.jar:6.0.13]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:616) ~[spring-context-6.0.13.jar:6.0.13]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:738) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:440) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-3.1.5.jar:3.1.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) ~[spring-boot-3.1.5.jar:3.1.5]
+	at com.ferreteria.ferreteria_inventario.FerreteriaInventarioApplication.main(FerreteriaInventarioApplication.java:10) ~[classes/:na]
+
+2025-10-26T14:13:23.865-05:00  WARN 5216 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T14:13:23.866-05:00  WARN 5216 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T14:13:24.199-05:00  INFO 5216 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T14:13:24.205-05:00  INFO 5216 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T14:13:24.253-05:00  WARN 5216 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T14:13:24.424-05:00  INFO 5216 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T14:13:24.853-05:00  INFO 5216 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@73e25780, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1f4cb17b, org.springframework.security.web.context.SecurityContextHolderFilter@726d8fa0, org.springframework.security.web.header.HeaderWriterFilter@776a7ec6, org.springframework.security.web.csrf.CsrfFilter@6fe9c048, org.springframework.security.web.authentication.logout.LogoutFilter@5e9cb95, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4769378c, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@32f14274, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@280099a0, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@56d742ad, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@666b1244, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3ae87e38, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7aca299e, org.springframework.security.web.access.ExceptionTranslationFilter@3cc817bd, org.springframework.security.web.access.intercept.AuthorizationFilter@320770d7]
+2025-10-26T14:13:24.918-05:00  INFO 5216 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T14:13:24.927-05:00  INFO 5216 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 6.719 seconds (process running for 15.736)
+2025-10-26T14:13:29.332-05:00  INFO 5216 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T14:13:29.333-05:00  INFO 5216 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T14:13:29.334-05:00  INFO 5216 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-26T17:00:35.036-05:00  INFO 5216 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T17:00:43.678-05:00  INFO 12496 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 12496 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T17:00:43.681-05:00  INFO 12496 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T17:00:44.262-05:00  INFO 12496 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T17:00:44.278-05:00  INFO 12496 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 JPA repository interfaces.
+2025-10-26T17:00:44.802-05:00  INFO 12496 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T17:00:44.810-05:00  INFO 12496 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T17:00:44.810-05:00  INFO 12496 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T17:00:44.871-05:00  INFO 12496 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T17:00:44.871-05:00  INFO 12496 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1151 ms
+2025-10-26T17:00:45.055-05:00  INFO 12496 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T17:00:45.213-05:00  INFO 12496 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6f38f084
+2025-10-26T17:00:45.215-05:00  INFO 12496 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T17:00:45.280-05:00  INFO 12496 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T17:00:45.333-05:00  INFO 12496 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T17:00:45.335-05:00  INFO 12496 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T17:00:45.566-05:00  INFO 12496 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T17:00:45.637-05:00  WARN 12496 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T17:00:45.637-05:00  WARN 12496 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T17:00:45.882-05:00  INFO 12496 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T17:00:45.887-05:00  INFO 12496 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T17:00:45.919-05:00  WARN 12496 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T17:00:46.031-05:00  INFO 12496 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T17:00:46.330-05:00  INFO 12496 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@32ddcca, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1ddc8fc, org.springframework.security.web.context.SecurityContextHolderFilter@65a66a75, org.springframework.security.web.header.HeaderWriterFilter@632b96b8, org.springframework.security.web.csrf.CsrfFilter@5b324447, org.springframework.security.web.authentication.logout.LogoutFilter@50b624da, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6a0ee80, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@7e43b342, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@77d58f3a, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@38874eb5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@78829412, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@66d44581, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1e288c76, org.springframework.security.web.access.ExceptionTranslationFilter@72b53f27, org.springframework.security.web.access.intercept.AuthorizationFilter@5274830e]
+2025-10-26T17:00:46.377-05:00  INFO 12496 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T17:00:46.384-05:00  INFO 12496 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.032 seconds (process running for 10.568)
+2025-10-26T17:04:07.929-05:00  INFO 12496 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T17:04:07.930-05:00  INFO 12496 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T17:04:07.931-05:00  INFO 12496 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-26T17:11:26.926-05:00  INFO 12496 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T17:11:26.928-05:00  INFO 12496 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T17:11:26.939-05:00  INFO 12496 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T17:11:31.806-05:00  INFO 15452 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 15452 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T17:11:31.808-05:00  INFO 15452 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T17:11:32.615-05:00  INFO 15452 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T17:11:32.634-05:00  INFO 15452 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 0 JPA repository interfaces.
+2025-10-26T17:11:33.238-05:00  INFO 15452 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T17:11:33.248-05:00  INFO 15452 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T17:11:33.255-05:00  INFO 15452 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T17:11:33.325-05:00  INFO 15452 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T17:11:33.325-05:00  INFO 15452 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1458 ms
+2025-10-26T17:11:33.537-05:00  INFO 15452 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T17:11:33.672-05:00  INFO 15452 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6d69a0d3
+2025-10-26T17:11:33.674-05:00  INFO 15452 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T17:11:33.732-05:00  INFO 15452 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T17:11:33.776-05:00  INFO 15452 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T17:11:33.778-05:00  INFO 15452 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T17:11:34.012-05:00  INFO 15452 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T17:11:34.068-05:00  WARN 15452 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T17:11:34.070-05:00  WARN 15452 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T17:11:34.310-05:00  INFO 15452 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T17:11:34.314-05:00  INFO 15452 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T17:11:34.346-05:00  WARN 15452 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T17:11:34.457-05:00  INFO 15452 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T17:11:34.780-05:00  INFO 15452 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1e2b37cd, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2ba08f26, org.springframework.security.web.context.SecurityContextHolderFilter@744f0e0b, org.springframework.security.web.header.HeaderWriterFilter@d271d6c, org.springframework.security.web.csrf.CsrfFilter@581d5b33, org.springframework.security.web.authentication.logout.LogoutFilter@3ba8ef4e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@dbcf7c3, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@41463c56, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@6033f36c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@f575d2b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4af44f2a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@47994b51, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@50b624da, org.springframework.security.web.access.ExceptionTranslationFilter@6fafbdac, org.springframework.security.web.access.intercept.AuthorizationFilter@21dd9203]
+2025-10-26T17:11:34.831-05:00  INFO 15452 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T17:11:34.838-05:00  INFO 15452 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.771 seconds (process running for 5.614)
+2025-10-26T17:11:40.820-05:00  INFO 15452 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T17:11:40.820-05:00  INFO 15452 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T17:11:40.822-05:00  INFO 15452 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-26T17:56:31.235-05:00  WARN 15452 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=19m27s60ms231µs100ns).
+2025-10-26T18:01:03.702-05:00  WARN 15452 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m2s454ms480µs700ns).
+2025-10-26T18:24:16.609-05:00  INFO 15452 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T18:24:16.611-05:00  INFO 15452 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T18:24:16.614-05:00  INFO 15452 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T18:24:19.369-05:00  INFO 29316 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 29316 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T18:24:19.372-05:00  INFO 29316 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T18:24:20.005-05:00  INFO 29316 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T18:24:20.019-05:00  INFO 29316 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 JPA repository interfaces.
+2025-10-26T18:24:20.526-05:00  INFO 29316 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T18:24:20.533-05:00  INFO 29316 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T18:24:20.534-05:00  INFO 29316 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T18:24:20.588-05:00  INFO 29316 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T18:24:20.589-05:00  INFO 29316 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1159 ms
+2025-10-26T18:24:20.761-05:00  INFO 29316 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T18:24:20.879-05:00  INFO 29316 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@75882261
+2025-10-26T18:24:20.880-05:00  INFO 29316 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T18:24:20.927-05:00  INFO 29316 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T18:24:20.968-05:00  INFO 29316 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T18:24:20.970-05:00  INFO 29316 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T18:24:21.170-05:00  INFO 29316 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T18:24:21.227-05:00  WARN 29316 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T18:24:21.228-05:00  WARN 29316 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T18:24:21.440-05:00  INFO 29316 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T18:24:21.446-05:00  INFO 29316 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T18:24:21.479-05:00  WARN 29316 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T18:24:21.584-05:00  INFO 29316 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T18:24:21.936-05:00  INFO 29316 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@50008974, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5274830e, org.springframework.security.web.context.SecurityContextHolderFilter@41463c56, org.springframework.security.web.header.HeaderWriterFilter@5020e5ab, org.springframework.security.web.csrf.CsrfFilter@6958d5d0, org.springframework.security.web.authentication.logout.LogoutFilter@1e466d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4d90d91f, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1be4a7e3, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@6a0ee80, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1642968c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@629de8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7db2b614, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@71de1091, org.springframework.security.web.access.ExceptionTranslationFilter@47994b51, org.springframework.security.web.access.intercept.AuthorizationFilter@f575d2b]
+2025-10-26T18:24:21.987-05:00  INFO 29316 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T18:24:21.993-05:00  INFO 29316 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.214 seconds (process running for 4.171)
+2025-10-26T18:24:30.594-05:00  INFO 29316 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T18:24:30.594-05:00  INFO 29316 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T18:24:30.595-05:00  INFO 29316 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-26T18:30:21.761-05:00  WARN 29316 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m703ms584µs800ns).
+2025-10-26T19:20:49.443-05:00  INFO 29316 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T19:20:49.446-05:00  INFO 29316 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T19:20:49.448-05:00  INFO 29316 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T19:21:02.879-05:00  INFO 33124 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 33124 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T19:21:02.881-05:00  INFO 33124 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T19:21:03.516-05:00  INFO 33124 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T19:21:03.533-05:00  INFO 33124 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 JPA repository interfaces.
+2025-10-26T19:21:04.113-05:00  INFO 33124 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T19:21:04.122-05:00  INFO 33124 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T19:21:04.122-05:00  INFO 33124 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T19:21:04.187-05:00  INFO 33124 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T19:21:04.187-05:00  INFO 33124 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1266 ms
+2025-10-26T19:21:04.378-05:00  INFO 33124 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T19:21:04.523-05:00  INFO 33124 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4f1afe8f
+2025-10-26T19:21:04.525-05:00  INFO 33124 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T19:21:04.587-05:00  INFO 33124 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T19:21:04.633-05:00  INFO 33124 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T19:21:04.635-05:00  INFO 33124 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T19:21:04.846-05:00  INFO 33124 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T19:21:04.905-05:00  WARN 33124 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T19:21:04.906-05:00  WARN 33124 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T19:21:05.126-05:00  INFO 33124 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T19:21:05.131-05:00  INFO 33124 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T19:21:05.161-05:00  WARN 33124 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T19:21:05.269-05:00  INFO 33124 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T19:21:05.592-05:00  INFO 33124 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@738ed8f5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1cfb7450, org.springframework.security.web.context.SecurityContextHolderFilter@6d0bcf8c, org.springframework.security.web.header.HeaderWriterFilter@5a07ae2f, org.springframework.security.web.csrf.CsrfFilter@5020e5ab, org.springframework.security.web.authentication.logout.LogoutFilter@2634d000, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@520ec7a7, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@63243c8f, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@478c84aa, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1ddc8fc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@66d44581, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@34d72f06, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1d1deb11, org.springframework.security.web.access.ExceptionTranslationFilter@5b430541, org.springframework.security.web.access.intercept.AuthorizationFilter@53dbe7b2]
+2025-10-26T19:21:05.641-05:00  INFO 33124 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T19:21:05.649-05:00  INFO 33124 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.14 seconds (process running for 4.274)
+2025-10-26T19:21:25.756-05:00  INFO 33124 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T19:21:25.757-05:00  INFO 33124 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T19:21:25.758-05:00  INFO 33124 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-26T19:28:59.704-05:00  WARN 33124 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m25s14ms965µs400ns).
+2025-10-26T19:35:17.982-05:00  INFO 33124 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T19:35:17.984-05:00  INFO 33124 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T19:35:17.993-05:00  INFO 33124 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T19:35:20.642-05:00  INFO 25096 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 25096 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T19:35:20.644-05:00  INFO 25096 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T19:35:21.447-05:00  INFO 25096 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T19:35:21.467-05:00  INFO 25096 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 JPA repository interfaces.
+2025-10-26T19:35:22.154-05:00  INFO 25096 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T19:35:22.162-05:00  INFO 25096 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T19:35:22.163-05:00  INFO 25096 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T19:35:22.234-05:00  INFO 25096 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T19:35:22.235-05:00  INFO 25096 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1533 ms
+2025-10-26T19:35:22.445-05:00  INFO 25096 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T19:35:22.570-05:00  INFO 25096 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@48cd319d
+2025-10-26T19:35:22.572-05:00  INFO 25096 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T19:35:22.627-05:00  INFO 25096 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T19:35:22.679-05:00  INFO 25096 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T19:35:22.682-05:00  INFO 25096 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T19:35:22.930-05:00  INFO 25096 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T19:35:22.985-05:00  WARN 25096 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T19:35:22.987-05:00  WARN 25096 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T19:35:23.238-05:00  INFO 25096 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T19:35:23.243-05:00  INFO 25096 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T19:35:23.277-05:00  WARN 25096 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T19:35:23.404-05:00  INFO 25096 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T19:35:23.784-05:00  INFO 25096 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@55202ba6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2ef1fc8a, org.springframework.security.web.context.SecurityContextHolderFilter@72b53f27, org.springframework.security.web.header.HeaderWriterFilter@34d5eac, org.springframework.security.web.csrf.CsrfFilter@1860b107, org.springframework.security.web.authentication.logout.LogoutFilter@4d90d91f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1642968c, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@66d44581, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@38874eb5, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@53551fef, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@632b96b8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5a07ae2f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@76b019c4, org.springframework.security.web.access.ExceptionTranslationFilter@69abeb14, org.springframework.security.web.access.intercept.AuthorizationFilter@2634d000]
+2025-10-26T19:35:23.847-05:00  INFO 25096 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T19:35:23.855-05:00  INFO 25096 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.708 seconds (process running for 4.54)
+2025-10-26T19:36:17.401-05:00  INFO 25096 --- [http-nio-8086-exec-2] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T19:36:17.402-05:00  INFO 25096 --- [http-nio-8086-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T19:36:17.404-05:00  INFO 25096 --- [http-nio-8086-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-10-26T19:37:55.673-05:00  INFO 25096 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T19:37:55.676-05:00  INFO 25096 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T19:37:55.685-05:00  INFO 25096 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T19:37:59.938-05:00  INFO 30312 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 30312 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T19:37:59.940-05:00  INFO 30312 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T19:38:00.592-05:00  INFO 30312 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T19:38:00.608-05:00  INFO 30312 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 JPA repository interfaces.
+2025-10-26T19:38:01.141-05:00  INFO 30312 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T19:38:01.165-05:00  INFO 30312 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T19:38:01.165-05:00  INFO 30312 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T19:38:01.231-05:00  INFO 30312 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T19:38:01.231-05:00  INFO 30312 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1241 ms
+2025-10-26T19:38:01.417-05:00  INFO 30312 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T19:38:01.535-05:00  INFO 30312 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@611d0763
+2025-10-26T19:38:01.537-05:00  INFO 30312 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T19:38:01.593-05:00  INFO 30312 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T19:38:01.637-05:00  INFO 30312 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T19:38:01.639-05:00  INFO 30312 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T19:38:01.865-05:00  INFO 30312 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T19:38:01.921-05:00  WARN 30312 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T19:38:01.922-05:00  WARN 30312 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T19:38:02.149-05:00  INFO 30312 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T19:38:02.155-05:00  INFO 30312 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T19:38:02.188-05:00  WARN 30312 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T19:38:02.313-05:00  INFO 30312 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T19:38:02.674-05:00  INFO 30312 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@50008974, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5274830e, org.springframework.security.web.context.SecurityContextHolderFilter@41463c56, org.springframework.security.web.header.HeaderWriterFilter@5020e5ab, org.springframework.security.web.csrf.CsrfFilter@6958d5d0, org.springframework.security.web.authentication.logout.LogoutFilter@1e466d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4d90d91f, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1be4a7e3, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@6a0ee80, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1642968c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@629de8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7db2b614, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@71de1091, org.springframework.security.web.access.ExceptionTranslationFilter@47994b51, org.springframework.security.web.access.intercept.AuthorizationFilter@f575d2b]
+2025-10-26T19:38:02.730-05:00  INFO 30312 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T19:38:02.737-05:00  INFO 30312 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.249 seconds (process running for 3.938)
+2025-10-26T19:38:08.513-05:00  INFO 30312 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T19:38:08.513-05:00  INFO 30312 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T19:38:08.515-05:00  INFO 30312 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-26T20:18:19.137-05:00  WARN 30312 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=36m17s410ms865µs700ns).
+2025-10-26T20:18:28.916-05:00  INFO 30312 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T20:18:28.918-05:00  INFO 30312 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T20:18:28.922-05:00  INFO 30312 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T20:18:33.129-05:00  INFO 21256 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 21256 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T20:18:33.132-05:00  INFO 21256 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T20:18:33.728-05:00  INFO 21256 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T20:18:33.743-05:00  INFO 21256 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 JPA repository interfaces.
+2025-10-26T20:18:34.263-05:00  INFO 21256 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T20:18:34.270-05:00  INFO 21256 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T20:18:34.270-05:00  INFO 21256 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T20:18:34.325-05:00  INFO 21256 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T20:18:34.325-05:00  INFO 21256 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1146 ms
+2025-10-26T20:18:34.502-05:00  INFO 21256 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T20:18:34.626-05:00  INFO 21256 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4ef18604
+2025-10-26T20:18:34.628-05:00  INFO 21256 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T20:18:34.678-05:00  INFO 21256 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T20:18:34.721-05:00  INFO 21256 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T20:18:34.723-05:00  INFO 21256 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T20:18:34.958-05:00  INFO 21256 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T20:18:35.017-05:00  WARN 21256 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T20:18:35.018-05:00  WARN 21256 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T20:18:35.272-05:00  INFO 21256 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T20:18:35.277-05:00  INFO 21256 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T20:18:35.312-05:00  WARN 21256 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T20:18:35.458-05:00  INFO 21256 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T20:18:35.807-05:00  INFO 21256 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2ef1fc8a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@38874eb5, org.springframework.security.web.context.SecurityContextHolderFilter@1be4a7e3, org.springframework.security.web.header.HeaderWriterFilter@2c1a95a2, org.springframework.security.web.csrf.CsrfFilter@744f0e0b, org.springframework.security.web.authentication.logout.LogoutFilter@c478e4e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3a7dcfb7, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1afa048a, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@76b019c4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7d5d77a6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@544e6b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@78829412, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@221961af, org.springframework.security.web.access.ExceptionTranslationFilter@7db2b614, org.springframework.security.web.access.intercept.AuthorizationFilter@1642968c]
+2025-10-26T20:18:35.864-05:00  INFO 21256 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T20:18:35.879-05:00  INFO 21256 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.174 seconds (process running for 3.853)
+2025-10-26T20:20:19.562-05:00  INFO 21256 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T20:20:19.562-05:00  INFO 21256 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T20:20:19.563-05:00  INFO 21256 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-26T20:34:10.871-05:00  INFO 21256 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T20:34:10.874-05:00  INFO 21256 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T20:34:10.883-05:00  INFO 21256 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T20:34:16.089-05:00  INFO 1584 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 1584 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T20:34:16.091-05:00  INFO 1584 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T20:34:16.683-05:00  INFO 1584 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T20:34:16.698-05:00  INFO 1584 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 JPA repository interfaces.
+2025-10-26T20:34:17.208-05:00  INFO 1584 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T20:34:17.215-05:00  INFO 1584 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T20:34:17.215-05:00  INFO 1584 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T20:34:17.332-05:00  INFO 1584 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T20:34:17.333-05:00  INFO 1584 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1190 ms
+2025-10-26T20:34:17.511-05:00  INFO 1584 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T20:34:17.625-05:00  INFO 1584 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@48cd319d
+2025-10-26T20:34:17.626-05:00  INFO 1584 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T20:34:17.679-05:00  INFO 1584 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T20:34:17.723-05:00  INFO 1584 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T20:34:17.725-05:00  INFO 1584 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T20:34:17.947-05:00  INFO 1584 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T20:34:17.998-05:00  WARN 1584 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T20:34:17.998-05:00  WARN 1584 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T20:34:18.228-05:00  INFO 1584 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T20:34:18.232-05:00  INFO 1584 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T20:34:18.265-05:00  WARN 1584 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T20:34:18.379-05:00  INFO 1584 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T20:34:18.708-05:00  INFO 1584 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2ef1fc8a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@38874eb5, org.springframework.security.web.context.SecurityContextHolderFilter@1be4a7e3, org.springframework.security.web.header.HeaderWriterFilter@2c1a95a2, org.springframework.security.web.csrf.CsrfFilter@744f0e0b, org.springframework.security.web.authentication.logout.LogoutFilter@c478e4e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3a7dcfb7, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1afa048a, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@76b019c4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7d5d77a6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@544e6b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@78829412, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@221961af, org.springframework.security.web.access.ExceptionTranslationFilter@7db2b614, org.springframework.security.web.access.intercept.AuthorizationFilter@1642968c]
+2025-10-26T20:34:18.768-05:00  INFO 1584 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T20:34:18.775-05:00  INFO 1584 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.085 seconds (process running for 3.716)
+2025-10-26T20:34:33.433-05:00  INFO 1584 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T20:34:33.433-05:00  INFO 1584 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T20:34:33.435-05:00  INFO 1584 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-26T20:46:37.876-05:00  INFO 1584 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T20:46:37.878-05:00  INFO 1584 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T20:46:37.886-05:00  INFO 1584 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T20:46:40.071-05:00  INFO 32072 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 32072 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T20:46:40.073-05:00  INFO 32072 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T20:46:40.706-05:00  INFO 32072 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T20:46:40.722-05:00  INFO 32072 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 JPA repository interfaces.
+2025-10-26T20:46:41.231-05:00  INFO 32072 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T20:46:41.239-05:00  INFO 32072 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T20:46:41.239-05:00  INFO 32072 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T20:46:41.292-05:00  INFO 32072 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T20:46:41.292-05:00  INFO 32072 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1168 ms
+2025-10-26T20:46:41.460-05:00  INFO 32072 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T20:46:41.574-05:00  INFO 32072 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@35025a0a
+2025-10-26T20:46:41.576-05:00  INFO 32072 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T20:46:41.629-05:00  INFO 32072 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T20:46:41.666-05:00  INFO 32072 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T20:46:41.669-05:00  INFO 32072 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T20:46:41.880-05:00  INFO 32072 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T20:46:41.933-05:00  WARN 32072 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T20:46:41.934-05:00  WARN 32072 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T20:46:42.151-05:00  INFO 32072 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T20:46:42.156-05:00  INFO 32072 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T20:46:42.190-05:00  WARN 32072 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T20:46:42.296-05:00  INFO 32072 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T20:46:42.629-05:00  INFO 32072 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2ef1fc8a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@38874eb5, org.springframework.security.web.context.SecurityContextHolderFilter@1be4a7e3, org.springframework.security.web.header.HeaderWriterFilter@2c1a95a2, org.springframework.security.web.csrf.CsrfFilter@744f0e0b, org.springframework.security.web.authentication.logout.LogoutFilter@c478e4e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3a7dcfb7, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1afa048a, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@76b019c4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7d5d77a6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@544e6b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@78829412, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@221961af, org.springframework.security.web.access.ExceptionTranslationFilter@7db2b614, org.springframework.security.web.access.intercept.AuthorizationFilter@1642968c]
+2025-10-26T20:46:42.676-05:00  INFO 32072 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T20:46:42.682-05:00  INFO 32072 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.158 seconds (process running for 4.007)
+2025-10-26T20:46:57.901-05:00  INFO 32072 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T20:46:57.901-05:00  INFO 32072 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T20:46:57.903-05:00  INFO 32072 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-10-26T21:09:44.473-05:00  INFO 32072 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T21:09:44.475-05:00  INFO 32072 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T21:09:44.484-05:00  INFO 32072 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T21:09:46.846-05:00  INFO 13400 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 13400 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T21:09:46.849-05:00  INFO 13400 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T21:09:47.537-05:00  INFO 13400 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T21:09:47.555-05:00  INFO 13400 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 JPA repository interfaces.
+2025-10-26T21:09:48.152-05:00  INFO 13400 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T21:09:48.160-05:00  INFO 13400 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T21:09:48.161-05:00  INFO 13400 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T21:09:48.234-05:00  INFO 13400 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T21:09:48.234-05:00  INFO 13400 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1338 ms
+2025-10-26T21:09:48.431-05:00  INFO 13400 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T21:09:48.553-05:00  INFO 13400 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6f38f084
+2025-10-26T21:09:48.554-05:00  INFO 13400 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T21:09:48.608-05:00  INFO 13400 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T21:09:48.651-05:00  INFO 13400 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T21:09:48.653-05:00  INFO 13400 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T21:09:48.871-05:00  INFO 13400 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T21:09:48.929-05:00  WARN 13400 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T21:09:48.930-05:00  WARN 13400 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T21:09:49.164-05:00  INFO 13400 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T21:09:49.168-05:00  INFO 13400 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T21:09:49.203-05:00  WARN 13400 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T21:09:49.319-05:00  INFO 13400 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T21:09:49.655-05:00  INFO 13400 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2ef1fc8a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@38874eb5, org.springframework.security.web.context.SecurityContextHolderFilter@1be4a7e3, org.springframework.security.web.header.HeaderWriterFilter@2c1a95a2, org.springframework.security.web.csrf.CsrfFilter@744f0e0b, org.springframework.security.web.authentication.logout.LogoutFilter@c478e4e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3a7dcfb7, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1afa048a, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@76b019c4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7d5d77a6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@544e6b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@78829412, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@221961af, org.springframework.security.web.access.ExceptionTranslationFilter@7db2b614, org.springframework.security.web.access.intercept.AuthorizationFilter@1642968c]
+2025-10-26T21:09:49.704-05:00  INFO 13400 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T21:09:49.711-05:00  INFO 13400 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.291 seconds (process running for 4.021)
+2025-10-26T21:09:56.928-05:00  INFO 13400 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T21:09:56.929-05:00  INFO 13400 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T21:09:56.930-05:00  INFO 13400 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-26T21:32:26.162-05:00  INFO 13400 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T21:32:26.164-05:00  INFO 13400 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T21:32:26.176-05:00  INFO 13400 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T21:32:28.922-05:00  INFO 17696 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 17696 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T21:32:28.924-05:00  INFO 17696 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T21:32:29.679-05:00  INFO 17696 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T21:32:29.700-05:00  INFO 17696 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 JPA repository interfaces.
+2025-10-26T21:32:30.414-05:00  INFO 17696 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T21:32:30.424-05:00  INFO 17696 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T21:32:30.425-05:00  INFO 17696 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T21:32:30.500-05:00  INFO 17696 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T21:32:30.501-05:00  INFO 17696 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1531 ms
+2025-10-26T21:32:30.751-05:00  INFO 17696 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T21:32:30.907-05:00  INFO 17696 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e5beab5
+2025-10-26T21:32:30.909-05:00  INFO 17696 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T21:32:30.983-05:00  INFO 17696 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T21:32:31.039-05:00  INFO 17696 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T21:32:31.041-05:00  INFO 17696 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T21:32:31.305-05:00  INFO 17696 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T21:32:31.370-05:00  WARN 17696 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T21:32:31.372-05:00  WARN 17696 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T21:32:31.632-05:00  INFO 17696 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T21:32:31.638-05:00  INFO 17696 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T21:32:31.674-05:00  WARN 17696 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T21:32:31.807-05:00  INFO 17696 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T21:32:32.200-05:00  INFO 17696 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2ef1fc8a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@38874eb5, org.springframework.security.web.context.SecurityContextHolderFilter@1be4a7e3, org.springframework.security.web.header.HeaderWriterFilter@2c1a95a2, org.springframework.security.web.csrf.CsrfFilter@744f0e0b, org.springframework.security.web.authentication.logout.LogoutFilter@c478e4e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3a7dcfb7, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1afa048a, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@76b019c4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7d5d77a6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@544e6b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@78829412, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@221961af, org.springframework.security.web.access.ExceptionTranslationFilter@7db2b614, org.springframework.security.web.access.intercept.AuthorizationFilter@1642968c]
+2025-10-26T21:32:32.258-05:00  INFO 17696 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T21:32:32.267-05:00  INFO 17696 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.837 seconds (process running for 4.731)
+2025-10-26T21:32:40.733-05:00  INFO 17696 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T21:32:40.733-05:00  INFO 17696 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T21:32:40.735-05:00  INFO 17696 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-10-26T21:55:27.778-05:00  INFO 17696 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T21:55:27.781-05:00  INFO 17696 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T21:55:27.791-05:00  INFO 17696 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T21:55:30.416-05:00  INFO 31200 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 31200 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T21:55:30.418-05:00  INFO 31200 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T21:55:31.115-05:00  INFO 31200 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T21:55:31.129-05:00  INFO 31200 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 JPA repository interfaces.
+2025-10-26T21:55:31.649-05:00  INFO 31200 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T21:55:31.656-05:00  INFO 31200 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T21:55:31.656-05:00  INFO 31200 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T21:55:31.715-05:00  INFO 31200 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T21:55:31.715-05:00  INFO 31200 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1232 ms
+2025-10-26T21:55:31.910-05:00  INFO 31200 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T21:55:32.054-05:00  INFO 31200 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7c70aae1
+2025-10-26T21:55:32.057-05:00  INFO 31200 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T21:55:32.138-05:00  INFO 31200 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T21:55:32.200-05:00  INFO 31200 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T21:55:32.203-05:00  INFO 31200 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T21:55:32.517-05:00  INFO 31200 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T21:55:32.589-05:00  WARN 31200 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T21:55:32.591-05:00  WARN 31200 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T21:55:32.900-05:00  INFO 31200 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T21:55:32.907-05:00  INFO 31200 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T21:55:32.947-05:00  WARN 31200 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T21:55:33.117-05:00  INFO 31200 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T21:55:33.618-05:00  INFO 31200 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@38874eb5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@76b019c4, org.springframework.security.web.context.SecurityContextHolderFilter@632b96b8, org.springframework.security.web.header.HeaderWriterFilter@1adf387e, org.springframework.security.web.csrf.CsrfFilter@4136b193, org.springframework.security.web.authentication.logout.LogoutFilter@1e2b37cd, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@50b4e7b2, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@293ecff6, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@221961af, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@71b7e9c8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5b430541, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3ba8ef4e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@32ddcca, org.springframework.security.web.access.ExceptionTranslationFilter@34d5eac, org.springframework.security.web.access.intercept.AuthorizationFilter@3a7dcfb7]
+2025-10-26T21:55:33.669-05:00  INFO 31200 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T21:55:33.678-05:00  INFO 31200 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.743 seconds (process running for 4.655)
+2025-10-26T21:55:39.741-05:00  INFO 31200 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T21:55:39.741-05:00  INFO 31200 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T21:55:39.742-05:00  INFO 31200 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-26T22:10:10.798-05:00  WARN 31200 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m6s113ms195µs700ns).
+2025-10-26T22:10:19.009-05:00  INFO 31200 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T22:10:19.011-05:00  INFO 31200 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T22:10:19.019-05:00  INFO 31200 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T22:10:23.692-05:00  INFO 19724 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 19724 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T22:10:23.693-05:00  INFO 19724 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T22:10:24.352-05:00  INFO 19724 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T22:10:24.370-05:00  INFO 19724 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 JPA repository interfaces.
+2025-10-26T22:10:24.922-05:00  INFO 19724 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T22:10:24.931-05:00  INFO 19724 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T22:10:24.931-05:00  INFO 19724 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T22:10:24.992-05:00  INFO 19724 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T22:10:24.992-05:00  INFO 19724 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1248 ms
+2025-10-26T22:10:25.200-05:00  INFO 19724 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T22:10:25.320-05:00  INFO 19724 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e5beab5
+2025-10-26T22:10:25.322-05:00  INFO 19724 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T22:10:25.376-05:00  INFO 19724 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T22:10:25.425-05:00  INFO 19724 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T22:10:25.428-05:00  INFO 19724 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T22:10:25.642-05:00  INFO 19724 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T22:10:25.700-05:00  WARN 19724 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T22:10:25.701-05:00  WARN 19724 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T22:10:25.934-05:00  INFO 19724 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T22:10:25.939-05:00  INFO 19724 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T22:10:25.971-05:00  WARN 19724 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T22:10:26.077-05:00  INFO 19724 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T22:10:26.413-05:00  INFO 19724 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1cfb7450, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@478c84aa, org.springframework.security.web.context.SecurityContextHolderFilter@a1a72d4, org.springframework.security.web.header.HeaderWriterFilter@78829412, org.springframework.security.web.csrf.CsrfFilter@19f1f330, org.springframework.security.web.authentication.logout.LogoutFilter@1642968c, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@53551fef, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@2ea4e762, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@1d1deb11, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@77d58f3a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1afa048a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7e43b342, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@18d1d137, org.springframework.security.web.access.ExceptionTranslationFilter@65a66a75, org.springframework.security.web.access.intercept.AuthorizationFilter@520ec7a7]
+2025-10-26T22:10:26.462-05:00  INFO 19724 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T22:10:26.469-05:00  INFO 19724 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.234 seconds (process running for 3.893)
+2025-10-26T22:10:34.322-05:00  INFO 19724 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T22:10:34.322-05:00  INFO 19724 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T22:10:34.325-05:00  INFO 19724 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-10-26T22:12:34.993-05:00  INFO 19724 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T22:12:34.996-05:00  INFO 19724 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T22:12:35.003-05:00  INFO 19724 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T22:12:38.778-05:00  INFO 35488 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 35488 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T22:12:38.780-05:00  INFO 35488 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T22:12:39.445-05:00  INFO 35488 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T22:12:39.460-05:00  INFO 35488 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 JPA repository interfaces.
+2025-10-26T22:12:39.951-05:00  INFO 35488 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T22:12:39.957-05:00  INFO 35488 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T22:12:39.958-05:00  INFO 35488 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T22:12:40.015-05:00  INFO 35488 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T22:12:40.016-05:00  INFO 35488 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1186 ms
+2025-10-26T22:12:40.185-05:00  INFO 35488 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T22:12:40.313-05:00  INFO 35488 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@57186526
+2025-10-26T22:12:40.314-05:00  INFO 35488 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T22:12:40.371-05:00  INFO 35488 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T22:12:40.416-05:00  INFO 35488 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T22:12:40.418-05:00  INFO 35488 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T22:12:40.626-05:00  INFO 35488 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T22:12:40.681-05:00  WARN 35488 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T22:12:40.682-05:00  WARN 35488 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T22:12:40.903-05:00  INFO 35488 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T22:12:40.908-05:00  INFO 35488 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T22:12:40.938-05:00  WARN 35488 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T22:12:41.039-05:00  INFO 35488 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T22:12:41.357-05:00  INFO 35488 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@c478e4e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1e2b37cd, org.springframework.security.web.context.SecurityContextHolderFilter@1860b107, org.springframework.security.web.header.HeaderWriterFilter@c7c07ff, org.springframework.security.web.csrf.CsrfFilter@374ba492, org.springframework.security.web.authentication.logout.LogoutFilter@78829412, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@21dd9203, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@143fe09c, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@2ba08f26, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@770cbe5d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4136b193, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2ffcdc9b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6033f36c, org.springframework.security.web.access.ExceptionTranslationFilter@50caeb4b, org.springframework.security.web.access.intercept.AuthorizationFilter@7e43b342]
+2025-10-26T22:12:41.404-05:00  INFO 35488 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T22:12:41.411-05:00  INFO 35488 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.094 seconds (process running for 3.816)
+2025-10-26T22:13:52.750-05:00  INFO 35488 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T22:13:52.750-05:00  INFO 35488 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T22:13:52.752-05:00  INFO 35488 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-26T22:15:56.949-05:00  INFO 35488 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T22:15:56.950-05:00  INFO 35488 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T22:15:56.959-05:00  INFO 35488 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T22:15:59.500-05:00  INFO 5932 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 5932 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T22:15:59.502-05:00  INFO 5932 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T22:16:00.248-05:00  INFO 5932 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T22:16:00.270-05:00  INFO 5932 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 0 JPA repository interfaces.
+2025-10-26T22:16:00.895-05:00  INFO 5932 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T22:16:00.905-05:00  INFO 5932 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T22:16:00.905-05:00  INFO 5932 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T22:16:01.002-05:00  INFO 5932 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T22:16:01.003-05:00  INFO 5932 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1448 ms
+2025-10-26T22:16:01.300-05:00  INFO 5932 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T22:16:01.490-05:00  INFO 5932 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3fde2209
+2025-10-26T22:16:01.492-05:00  INFO 5932 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T22:16:01.608-05:00  INFO 5932 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T22:16:01.674-05:00  INFO 5932 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T22:16:01.676-05:00  INFO 5932 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T22:16:01.964-05:00  INFO 5932 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T22:16:02.034-05:00  WARN 5932 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T22:16:02.035-05:00  WARN 5932 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T22:16:02.365-05:00  INFO 5932 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T22:16:02.371-05:00  INFO 5932 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T22:16:02.413-05:00  WARN 5932 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T22:16:02.563-05:00  INFO 5932 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T22:16:02.918-05:00  INFO 5932 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4745bcc6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2634d000, org.springframework.security.web.context.SecurityContextHolderFilter@47994b51, org.springframework.security.web.header.HeaderWriterFilter@570127fa, org.springframework.security.web.csrf.CsrfFilter@3909308c, org.springframework.security.web.authentication.logout.LogoutFilter@70eb94d7, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@74919649, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@7db2b614, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@1642968c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@50b624da, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5020e5ab, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@161c9468, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3a7dcfb7, org.springframework.security.web.access.ExceptionTranslationFilter@4136b193, org.springframework.security.web.access.intercept.AuthorizationFilter@36931450]
+2025-10-26T22:16:02.964-05:00  INFO 5932 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T22:16:02.970-05:00  INFO 5932 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.953 seconds (process running for 4.701)
+2025-10-26T22:16:09.320-05:00  INFO 5932 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T22:16:09.322-05:00  INFO 5932 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T22:16:09.325-05:00  INFO 5932 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-10-26T22:22:22.605-05:00  INFO 5932 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T22:22:22.607-05:00  INFO 5932 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T22:22:22.615-05:00  INFO 5932 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T22:22:26.558-05:00  INFO 14420 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 14420 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T22:22:26.561-05:00  INFO 14420 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T22:22:27.158-05:00  INFO 14420 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T22:22:27.172-05:00  INFO 14420 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 JPA repository interfaces.
+2025-10-26T22:22:27.662-05:00  INFO 14420 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T22:22:27.670-05:00  INFO 14420 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T22:22:27.670-05:00  INFO 14420 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T22:22:27.733-05:00  INFO 14420 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T22:22:27.733-05:00  INFO 14420 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1125 ms
+2025-10-26T22:22:27.918-05:00  INFO 14420 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T22:22:28.041-05:00  INFO 14420 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@526f6427
+2025-10-26T22:22:28.043-05:00  INFO 14420 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T22:22:28.097-05:00  INFO 14420 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T22:22:28.139-05:00  INFO 14420 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T22:22:28.141-05:00  INFO 14420 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T22:22:28.353-05:00  INFO 14420 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T22:22:28.410-05:00  WARN 14420 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T22:22:28.411-05:00  WARN 14420 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T22:22:28.625-05:00  INFO 14420 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T22:22:28.630-05:00  INFO 14420 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T22:22:28.660-05:00  WARN 14420 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T22:22:28.765-05:00  INFO 14420 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T22:22:29.092-05:00  INFO 14420 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@38874eb5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@76b019c4, org.springframework.security.web.context.SecurityContextHolderFilter@632b96b8, org.springframework.security.web.header.HeaderWriterFilter@1adf387e, org.springframework.security.web.csrf.CsrfFilter@4136b193, org.springframework.security.web.authentication.logout.LogoutFilter@1e2b37cd, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@50b4e7b2, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@293ecff6, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@221961af, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@71b7e9c8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5b430541, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3ba8ef4e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@32ddcca, org.springframework.security.web.access.ExceptionTranslationFilter@34d5eac, org.springframework.security.web.access.intercept.AuthorizationFilter@3a7dcfb7]
+2025-10-26T22:22:29.139-05:00  INFO 14420 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T22:22:29.147-05:00  INFO 14420 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.005 seconds (process running for 3.651)
+2025-10-26T22:23:25.593-05:00  INFO 14420 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T22:23:25.593-05:00  INFO 14420 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T22:23:25.595-05:00  INFO 14420 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-26T22:26:57.141-05:00  INFO 14420 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T22:26:57.143-05:00  INFO 14420 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T22:26:57.151-05:00  INFO 14420 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T22:27:01.255-05:00  INFO 33064 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 33064 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T22:27:01.257-05:00  INFO 33064 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T22:27:02.058-05:00  INFO 33064 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T22:27:02.076-05:00  INFO 33064 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 0 JPA repository interfaces.
+2025-10-26T22:27:02.602-05:00  INFO 33064 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T22:27:02.610-05:00  INFO 33064 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T22:27:02.610-05:00  INFO 33064 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T22:27:02.671-05:00  INFO 33064 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T22:27:02.672-05:00  INFO 33064 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1357 ms
+2025-10-26T22:27:02.853-05:00  INFO 33064 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T22:27:02.975-05:00  INFO 33064 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1e226bcd
+2025-10-26T22:27:02.977-05:00  INFO 33064 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T22:27:03.031-05:00  INFO 33064 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T22:27:03.075-05:00  INFO 33064 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T22:27:03.076-05:00  INFO 33064 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T22:27:03.288-05:00  INFO 33064 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T22:27:03.343-05:00  WARN 33064 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T22:27:03.344-05:00  WARN 33064 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T22:27:03.576-05:00  INFO 33064 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T22:27:03.580-05:00  INFO 33064 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T22:27:03.613-05:00  WARN 33064 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T22:27:03.727-05:00  INFO 33064 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T22:27:04.050-05:00  INFO 33064 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4745bcc6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2634d000, org.springframework.security.web.context.SecurityContextHolderFilter@47994b51, org.springframework.security.web.header.HeaderWriterFilter@570127fa, org.springframework.security.web.csrf.CsrfFilter@3909308c, org.springframework.security.web.authentication.logout.LogoutFilter@70eb94d7, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@74919649, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@7db2b614, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@1642968c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@50b624da, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5020e5ab, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@161c9468, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3a7dcfb7, org.springframework.security.web.access.ExceptionTranslationFilter@4136b193, org.springframework.security.web.access.intercept.AuthorizationFilter@36931450]
+2025-10-26T22:27:04.098-05:00  INFO 33064 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T22:27:04.105-05:00  INFO 33064 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.381 seconds (process running for 4.187)
+2025-10-26T22:27:10.738-05:00  INFO 33064 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T22:27:10.738-05:00  INFO 33064 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T22:27:10.739-05:00  INFO 33064 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-26T22:30:12.608-05:00  INFO 33064 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T22:30:12.610-05:00  INFO 33064 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T22:30:12.619-05:00  INFO 33064 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T22:30:15.068-05:00  INFO 26392 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 26392 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T22:30:15.071-05:00  INFO 26392 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T22:30:15.683-05:00  INFO 26392 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T22:30:15.698-05:00  INFO 26392 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 JPA repository interfaces.
+2025-10-26T22:30:16.271-05:00  INFO 26392 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T22:30:16.279-05:00  INFO 26392 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T22:30:16.280-05:00  INFO 26392 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T22:30:16.342-05:00  INFO 26392 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T22:30:16.342-05:00  INFO 26392 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1221 ms
+2025-10-26T22:30:16.551-05:00  INFO 26392 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T22:30:16.700-05:00  INFO 26392 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@75882261
+2025-10-26T22:30:16.701-05:00  INFO 26392 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T22:30:16.776-05:00  INFO 26392 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T22:30:16.830-05:00  INFO 26392 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T22:30:16.832-05:00  INFO 26392 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T22:30:17.065-05:00  INFO 26392 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T22:30:17.118-05:00  WARN 26392 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T22:30:17.119-05:00  WARN 26392 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T22:30:17.340-05:00  INFO 26392 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T22:30:17.344-05:00  INFO 26392 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T22:30:17.376-05:00  WARN 26392 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T22:30:17.461-05:00 DEBUG 26392 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-10-26T22:30:17.492-05:00  INFO 26392 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T22:30:17.528-05:00 DEBUG 26392 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 2 mappings in 'requestMappingHandlerMapping'
+2025-10-26T22:30:17.547-05:00 DEBUG 26392 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-10-26T22:30:17.555-05:00 DEBUG 26392 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-10-26T22:30:17.818-05:00  INFO 26392 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@55202ba6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2ef1fc8a, org.springframework.security.web.context.SecurityContextHolderFilter@72b53f27, org.springframework.security.web.header.HeaderWriterFilter@34d5eac, org.springframework.security.web.csrf.CsrfFilter@1860b107, org.springframework.security.web.authentication.logout.LogoutFilter@4d90d91f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1642968c, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@66d44581, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@38874eb5, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@53551fef, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@632b96b8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5a07ae2f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@76b019c4, org.springframework.security.web.access.ExceptionTranslationFilter@69abeb14, org.springframework.security.web.access.intercept.AuthorizationFilter@2634d000]
+2025-10-26T22:30:17.866-05:00  INFO 26392 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T22:30:17.872-05:00  INFO 26392 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.238 seconds (process running for 4.063)
+2025-10-26T22:30:25.640-05:00  INFO 26392 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T22:30:25.640-05:00  INFO 26392 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T22:30:25.640-05:00 DEBUG 26392 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2025-10-26T22:30:25.640-05:00 DEBUG 26392 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2025-10-26T22:30:25.640-05:00 DEBUG 26392 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2025-10-26T22:30:25.641-05:00 DEBUG 26392 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3d4b45b
+2025-10-26T22:30:25.641-05:00 DEBUG 26392 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@5bdb9c69
+2025-10-26T22:30:25.642-05:00 DEBUG 26392 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-10-26T22:30:25.642-05:00  INFO 26392 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-10-26T22:30:31.106-05:00 DEBUG 26392 --- [http-nio-8086-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/ferreteria/?continue", parameters={masked}
+2025-10-26T22:30:31.175-05:00 DEBUG 26392 --- [http-nio-8086-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2025-10-26T22:30:31.504-05:00 DEBUG 26392 --- [http-nio-8086-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-10-26T22:30:37.534-05:00 DEBUG 26392 --- [http-nio-8086-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/ferreteria/registrar", parameters={}
+2025-10-26T22:30:37.536-05:00 DEBUG 26392 --- [http-nio-8086-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-10-26T22:30:37.541-05:00 DEBUG 26392 --- [http-nio-8086-exec-7] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2025-10-26T22:30:37.542-05:00 DEBUG 26392 --- [http-nio-8086-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2025-10-26T22:30:37.548-05:00 DEBUG 26392 --- [http-nio-8086-exec-7] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/ferreteria/error", parameters={}
+2025-10-26T22:30:37.551-05:00 DEBUG 26392 --- [http-nio-8086-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2025-10-26T22:30:37.591-05:00 DEBUG 26392 --- [http-nio-8086-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2025-10-26T22:30:37.598-05:00 DEBUG 26392 --- [http-nio-8086-exec-7] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2025-10-26T22:30:43.925-05:00 DEBUG 26392 --- [http-nio-8086-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/ferreteria/consultar", parameters={}
+2025-10-26T22:30:43.926-05:00 DEBUG 26392 --- [http-nio-8086-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-10-26T22:30:43.928-05:00 DEBUG 26392 --- [http-nio-8086-exec-4] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2025-10-26T22:30:43.928-05:00 DEBUG 26392 --- [http-nio-8086-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2025-10-26T22:30:43.929-05:00 DEBUG 26392 --- [http-nio-8086-exec-4] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/ferreteria/error", parameters={}
+2025-10-26T22:30:43.930-05:00 DEBUG 26392 --- [http-nio-8086-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2025-10-26T22:30:43.932-05:00 DEBUG 26392 --- [http-nio-8086-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2025-10-26T22:30:43.932-05:00 DEBUG 26392 --- [http-nio-8086-exec-4] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2025-10-26T22:30:46.088-05:00 DEBUG 26392 --- [http-nio-8086-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/ferreteria/stock-bajo", parameters={}
+2025-10-26T22:30:46.089-05:00 DEBUG 26392 --- [http-nio-8086-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-10-26T22:30:46.091-05:00 DEBUG 26392 --- [http-nio-8086-exec-9] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2025-10-26T22:30:46.091-05:00 DEBUG 26392 --- [http-nio-8086-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2025-10-26T22:30:46.092-05:00 DEBUG 26392 --- [http-nio-8086-exec-9] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/ferreteria/error", parameters={}
+2025-10-26T22:30:46.092-05:00 DEBUG 26392 --- [http-nio-8086-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2025-10-26T22:30:46.095-05:00 DEBUG 26392 --- [http-nio-8086-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2025-10-26T22:30:46.095-05:00 DEBUG 26392 --- [http-nio-8086-exec-9] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2025-10-26T22:30:48.379-05:00 DEBUG 26392 --- [http-nio-8086-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/ferreteria/soap-info", parameters={}
+2025-10-26T22:30:48.380-05:00 DEBUG 26392 --- [http-nio-8086-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-10-26T22:30:48.381-05:00 DEBUG 26392 --- [http-nio-8086-exec-5] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2025-10-26T22:30:48.382-05:00 DEBUG 26392 --- [http-nio-8086-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2025-10-26T22:30:48.383-05:00 DEBUG 26392 --- [http-nio-8086-exec-5] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/ferreteria/error", parameters={}
+2025-10-26T22:30:48.383-05:00 DEBUG 26392 --- [http-nio-8086-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2025-10-26T22:30:48.385-05:00 DEBUG 26392 --- [http-nio-8086-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2025-10-26T22:30:48.385-05:00 DEBUG 26392 --- [http-nio-8086-exec-5] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2025-10-26T22:30:50.783-05:00 DEBUG 26392 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/ferreteria/registrar", parameters={}
+2025-10-26T22:30:50.784-05:00 DEBUG 26392 --- [http-nio-8086-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-10-26T22:30:50.786-05:00 DEBUG 26392 --- [http-nio-8086-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2025-10-26T22:30:50.786-05:00 DEBUG 26392 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2025-10-26T22:30:50.787-05:00 DEBUG 26392 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/ferreteria/error", parameters={}
+2025-10-26T22:30:50.787-05:00 DEBUG 26392 --- [http-nio-8086-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2025-10-26T22:30:50.789-05:00 DEBUG 26392 --- [http-nio-8086-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2025-10-26T22:30:50.789-05:00 DEBUG 26392 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2025-10-26T22:30:53.121-05:00 DEBUG 26392 --- [http-nio-8086-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/ferreteria/", parameters={}
+2025-10-26T22:30:53.122-05:00 DEBUG 26392 --- [http-nio-8086-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2025-10-26T22:30:53.129-05:00 DEBUG 26392 --- [http-nio-8086-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-10-26T22:47:02.244-05:00  WARN 26392 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m15s390ms93µs600ns).
+2025-10-26T22:51:12.097-05:00  INFO 26392 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T22:51:12.101-05:00  INFO 26392 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T22:51:12.112-05:00  INFO 26392 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T22:51:14.692-05:00  INFO 13924 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 13924 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T22:51:14.695-05:00  INFO 13924 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T22:51:15.417-05:00  INFO 13924 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T22:51:15.436-05:00  INFO 13924 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 0 JPA repository interfaces.
+2025-10-26T22:51:16.092-05:00  INFO 13924 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T22:51:16.103-05:00  INFO 13924 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T22:51:16.104-05:00  INFO 13924 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T22:51:16.177-05:00  INFO 13924 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T22:51:16.178-05:00  INFO 13924 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1436 ms
+2025-10-26T22:51:16.391-05:00  INFO 13924 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T22:51:16.515-05:00  INFO 13924 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3887c7d7
+2025-10-26T22:51:16.517-05:00  INFO 13924 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T22:51:16.579-05:00  INFO 13924 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T22:51:16.649-05:00  INFO 13924 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T22:51:16.651-05:00  INFO 13924 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T22:51:16.920-05:00  INFO 13924 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T22:51:16.982-05:00  WARN 13924 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T22:51:16.983-05:00  WARN 13924 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T22:51:17.288-05:00  INFO 13924 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T22:51:17.293-05:00  INFO 13924 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T22:51:17.323-05:00  WARN 13924 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T22:51:17.421-05:00 DEBUG 13924 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-10-26T22:51:17.450-05:00  INFO 13924 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T22:51:17.488-05:00 DEBUG 13924 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 2 mappings in 'requestMappingHandlerMapping'
+2025-10-26T22:51:17.513-05:00 DEBUG 13924 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-10-26T22:51:17.524-05:00 DEBUG 13924 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-10-26T22:51:17.831-05:00  INFO 13924 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@234bfc8c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5008559a, org.springframework.security.web.context.SecurityContextHolderFilter@74919649, org.springframework.security.web.header.HeaderWriterFilter@2ea4e762, org.springframework.security.web.csrf.CsrfFilter@632b96b8, org.springframework.security.web.authentication.logout.LogoutFilter@2ef1fc8a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@478c84aa, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1764e45e, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@4c0bfe9e, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@f5f8de2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@599310ab, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@c478e4e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@490fbeaa, org.springframework.security.web.access.ExceptionTranslationFilter@1e466d, org.springframework.security.web.access.intercept.AuthorizationFilter@1cfb7450]
+2025-10-26T22:51:17.879-05:00  INFO 13924 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T22:51:17.886-05:00  INFO 13924 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.685 seconds (process running for 4.53)
+2025-10-26T22:51:22.601-05:00  INFO 13924 --- [http-nio-8086-exec-1] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T22:51:22.601-05:00  INFO 13924 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T22:51:22.601-05:00 DEBUG 13924 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2025-10-26T22:51:22.601-05:00 DEBUG 13924 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2025-10-26T22:51:22.601-05:00 DEBUG 13924 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2025-10-26T22:51:22.602-05:00 DEBUG 13924 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@679f59f1
+2025-10-26T22:51:22.602-05:00 DEBUG 13924 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@61bf405d
+2025-10-26T22:51:22.602-05:00 DEBUG 13924 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-10-26T22:51:22.602-05:00  INFO 13924 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-26T22:51:35.013-05:00 DEBUG 13924 --- [http-nio-8086-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/ferreteria/?continue", parameters={masked}
+2025-10-26T22:51:35.090-05:00 DEBUG 13924 --- [http-nio-8086-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2025-10-26T22:51:35.414-05:00 DEBUG 13924 --- [http-nio-8086-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-10-26T22:51:38.424-05:00 DEBUG 13924 --- [http-nio-8086-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/ferreteria/registrar", parameters={}
+2025-10-26T22:51:38.427-05:00 DEBUG 13924 --- [http-nio-8086-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-10-26T22:51:38.430-05:00 DEBUG 13924 --- [http-nio-8086-exec-10] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2025-10-26T22:51:38.431-05:00 DEBUG 13924 --- [http-nio-8086-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2025-10-26T22:51:38.437-05:00 DEBUG 13924 --- [http-nio-8086-exec-10] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/ferreteria/error", parameters={}
+2025-10-26T22:51:38.441-05:00 DEBUG 13924 --- [http-nio-8086-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2025-10-26T22:51:38.474-05:00 DEBUG 13924 --- [http-nio-8086-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2025-10-26T22:51:38.481-05:00 DEBUG 13924 --- [http-nio-8086-exec-10] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2025-10-26T22:51:40.924-05:00 DEBUG 13924 --- [http-nio-8086-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/ferreteria/consultar", parameters={}
+2025-10-26T22:51:40.925-05:00 DEBUG 13924 --- [http-nio-8086-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-10-26T22:51:40.927-05:00 DEBUG 13924 --- [http-nio-8086-exec-8] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2025-10-26T22:51:40.928-05:00 DEBUG 13924 --- [http-nio-8086-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2025-10-26T22:51:40.929-05:00 DEBUG 13924 --- [http-nio-8086-exec-8] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/ferreteria/error", parameters={}
+2025-10-26T22:51:40.929-05:00 DEBUG 13924 --- [http-nio-8086-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2025-10-26T22:51:40.932-05:00 DEBUG 13924 --- [http-nio-8086-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2025-10-26T22:51:40.933-05:00 DEBUG 13924 --- [http-nio-8086-exec-8] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2025-10-26T22:53:31.720-05:00 DEBUG 13924 --- [http-nio-8086-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/ferreteria/", parameters={}
+2025-10-26T22:53:31.722-05:00 DEBUG 13924 --- [http-nio-8086-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2025-10-26T22:53:31.731-05:00 DEBUG 13924 --- [http-nio-8086-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-10-26T22:54:28.087-05:00  INFO 13924 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T22:54:28.089-05:00  INFO 13924 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T22:54:28.098-05:00  INFO 13924 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T22:54:30.180-05:00  INFO 25560 --- [main] c.f.f.FerreteriaInventarioApplication    : Starting FerreteriaInventarioApplication using Java 22.0.2 with PID 25560 (C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario\ferreteria-inventario\target\classes started by USUARIO in C:\Users\USUARIO\Desktop\Septimo\Aplicaciones Distribuidas\Primer Parcial\ferreteria-inventario)
+2025-10-26T22:54:30.182-05:00  INFO 25560 --- [main] c.f.f.FerreteriaInventarioApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T22:54:30.771-05:00  INFO 25560 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-26T22:54:30.785-05:00  INFO 25560 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 JPA repository interfaces.
+2025-10-26T22:54:31.298-05:00  INFO 25560 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8086 (http)
+2025-10-26T22:54:31.305-05:00  INFO 25560 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T22:54:31.305-05:00  INFO 25560 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-10-26T22:54:31.361-05:00  INFO 25560 --- [main] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring embedded WebApplicationContext
+2025-10-26T22:54:31.362-05:00  INFO 25560 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1134 ms
+2025-10-26T22:54:31.548-05:00  INFO 25560 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T22:54:31.671-05:00  INFO 25560 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5d5c41e5
+2025-10-26T22:54:31.673-05:00  INFO 25560 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T22:54:31.726-05:00  INFO 25560 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-26T22:54:31.766-05:00  INFO 25560 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-10-26T22:54:31.767-05:00  INFO 25560 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2025-10-26T22:54:31.981-05:00  INFO 25560 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-26T22:54:32.041-05:00  WARN 25560 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-26T22:54:32.042-05:00  WARN 25560 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-10-26T22:54:32.255-05:00  INFO 25560 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-26T22:54:32.259-05:00  INFO 25560 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T22:54:32.287-05:00  WARN 25560 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-26T22:54:32.377-05:00 DEBUG 25560 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-10-26T22:54:32.407-05:00  INFO 25560 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-26T22:54:32.444-05:00 DEBUG 25560 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 2 mappings in 'requestMappingHandlerMapping'
+2025-10-26T22:54:32.463-05:00 DEBUG 25560 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-10-26T22:54:32.472-05:00 DEBUG 25560 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-10-26T22:54:32.753-05:00  INFO 25560 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5d75f90e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2212e291, org.springframework.security.web.context.SecurityContextHolderFilter@6e617c0e, org.springframework.security.web.header.HeaderWriterFilter@8bde368, org.springframework.security.web.csrf.CsrfFilter@5308e79d, org.springframework.security.web.authentication.logout.LogoutFilter@6705b763, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@79631db0, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@7ca29311, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@5af56240, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@35995029, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7455204c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@68229a6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2314cd97, org.springframework.security.web.access.ExceptionTranslationFilter@4e26040f, org.springframework.security.web.access.intercept.AuthorizationFilter@2051a0ec]
+2025-10-26T22:54:32.797-05:00  INFO 25560 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8086 (http) with context path '/ferreteria'
+2025-10-26T22:54:32.803-05:00  INFO 25560 --- [main] c.f.f.FerreteriaInventarioApplication    : Started FerreteriaInventarioApplication in 3.075 seconds (process running for 3.913)
+2025-10-26T22:54:44.136-05:00  INFO 25560 --- [http-nio-8086-exec-3] o.a.c.c.C.[.[localhost].[/ferreteria]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T22:54:44.137-05:00  INFO 25560 --- [http-nio-8086-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T22:54:44.137-05:00 DEBUG 25560 --- [http-nio-8086-exec-3] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2025-10-26T22:54:44.137-05:00 DEBUG 25560 --- [http-nio-8086-exec-3] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2025-10-26T22:54:44.137-05:00 DEBUG 25560 --- [http-nio-8086-exec-3] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2025-10-26T22:54:44.138-05:00 DEBUG 25560 --- [http-nio-8086-exec-3] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@11978f52
+2025-10-26T22:54:44.138-05:00 DEBUG 25560 --- [http-nio-8086-exec-3] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@72e36677
+2025-10-26T22:54:44.138-05:00 DEBUG 25560 --- [http-nio-8086-exec-3] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-10-26T22:54:44.138-05:00  INFO 25560 --- [http-nio-8086-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-26T22:54:49.213-05:00 DEBUG 25560 --- [http-nio-8086-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/ferreteria/?continue", parameters={masked}
+2025-10-26T22:54:49.291-05:00 DEBUG 25560 --- [http-nio-8086-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2025-10-26T22:54:49.652-05:00 DEBUG 25560 --- [http-nio-8086-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-10-26T22:54:51.033-05:00 DEBUG 25560 --- [http-nio-8086-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/ferreteria/registrar", parameters={}
+2025-10-26T22:54:51.035-05:00 DEBUG 25560 --- [http-nio-8086-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-10-26T22:54:51.039-05:00 DEBUG 25560 --- [http-nio-8086-exec-9] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2025-10-26T22:54:51.040-05:00 DEBUG 25560 --- [http-nio-8086-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2025-10-26T22:54:51.045-05:00 DEBUG 25560 --- [http-nio-8086-exec-9] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/ferreteria/error", parameters={}
+2025-10-26T22:54:51.048-05:00 DEBUG 25560 --- [http-nio-8086-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2025-10-26T22:54:51.078-05:00 DEBUG 25560 --- [http-nio-8086-exec-9] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2025-10-26T22:54:51.087-05:00 DEBUG 25560 --- [http-nio-8086-exec-9] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2025-10-26T22:58:11.154-05:00  INFO 25560 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-26T22:58:11.156-05:00  INFO 25560 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-26T22:58:11.166-05:00  INFO 25560 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

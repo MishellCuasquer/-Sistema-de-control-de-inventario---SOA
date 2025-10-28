@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Artículo - Sistema de Inventario</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .nav {
+            background: #f8f9fa;
+            padding: 15px 30px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1em;
+        }
+
+        .nav a:hover {
+            color: #764ba2;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid #dc3545;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        label span {
+            color: #dc3545;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            margin-top: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .help-text {
+            font-size: 0.875em;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+
+        .required-info {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>➕ Registrar Nuevo Artículo</h1>
+        <p>Complete el formulario con los datos del artículo</p>
+    </div>
+
+    <nav class="nav">
+        <a th:href="@{/}">← Volver al listado</a>
+    </nav>
+
+    <div class="content">
+        <div th:if="${error}" class="alert alert-error" th:text="${error}"></div>
+
+        <div class="required-info">
+            <strong>📌 Campos obligatorios marcados con (*)</strong><br>
+            Todos los campos marcados con asterisco son requeridos para registrar el artículo.
+        </div>
+
+        <form th:action="@{/registrar}" th:object="${articulo}" method="post">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="codigo">Código <span>*</span></label>
+                    <input type="text" id="codigo" th:field="*{codigo}" required
+                           pattern="[A-Z0-9-]+" maxlength="50"
+                           placeholder="Ej: MART-001">
+                    <div class="help-text">Solo mayúsculas, números y guiones</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="categoria">Categoría <span>*</span></label>
+                    <select id="categoria" th:field="*{categoria}" required>
+                        <option value="">Seleccione una categoría</option>
+                        <option th:each="cat : ${categorias}" th:value="${cat}" th:text="${cat}"></option>
+                        <option value="Herramientas Manuales">Herramientas Manuales</option>
+                        <option value="Herramientas Eléctricas">Herramientas Eléctricas</option>
+                        <option value="Ferretería">Ferretería</option>
+                        <option value="Pinturas">Pinturas</option>
+                        <option value="Electricidad">Electricidad</option>
+                        <option value="Plomería">Plomería</option>
+                        <option value="Cerrajería">Cerrajería</option>
+                        <option value="Abrasivos">Abrasivos</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="nombre">Nombre del Artículo <span>*</span></label>
+                <input type="text" id="nombre" th:field="*{nombre}" required
+                       minlength="3" maxlength="200"
+                       placeholder="Ej: Martillo de Carpintero">
+                <div class="help-text">Nombre descriptivo del producto (3-200 caracteres)</div>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" th:field="*{descripcion}"
+                          placeholder="Descripción detallada del artículo"></textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="precioCompra">Precio de Compra <span>*</span></label>
+                    <input type="number" id="precioCompra" th:field="*{precioCompra}"
+                           required step="0.01" min="0.01"
+                           placeholder="0.00">
+                    <div class="help-text">Precio al que adquiere el producto</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="precioVenta">Precio de Venta <span>*</span></label>
+                    <input type="number" id="precioVenta" th:field="*{precioVenta}"
+                           required step="0.01" min="0.01"
+                           placeholder="0.00">
+                    <div class="help-text">Debe ser mayor o igual al precio de compra</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="stockActual">Stock Actual <span>*</span></label>
+                    <input type="number" id="stockActual" th:field="*{stockActual}"
+                           required min="0"
+                           placeholder="0">
+                    <div class="help-text">Cantidad disponible en inventario</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="stockMinimo">Stock Mínimo <span>*</span></label>
+                    <input type="number" id="stockMinimo" th:field="*{stockMinimo}"
+                           required min="0"
+                           placeholder="5">
+                    <div class="help-text">Cantidad mínima para alerta</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="proveedor">Proveedor</label>
+                <input type="text" id="proveedor" th:field="*{proveedor}"
+                       maxlength="200"
+                       placeholder="Nombre del proveedor">
+                <div class="help-text">Opcional: Proveedor del artículo</div>
+            </div>
+
+            <button type="submit" class="btn">💾 Registrar Artículo</button>
+            <a th:href="@{/}" class="btn btn-secondary" style="text-align: center; display: block; text-decoration: none;">
+                ❌ Cancelar
+            </a>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Validación en tiempo real de precios
+    document.getElementById('precioCompra').addEventListener('input', validarPrecios);
+    document.getElementById('precioVenta').addEventListener('input', validarPrecios);
+
+    function validarPrecios() {
+        const precioCompra = parseFloat(document.getElementById('precioCompra').value) || 0;
+        const precioVenta = parseFloat(document.getElementById('precioVenta').value) || 0;
+
+        if (precioCompra > 0 && precioVenta > 0 && precioVenta < precioCompra) {
+            document.getElementById('precioVenta').setCustomValidity(
+                'El precio de venta debe ser mayor o igual al precio de compra'
+            );
+        } else {
+            document.getElementById('precioVenta').setCustomValidity('');
+        }
+    }
+
+    // Convertir código a mayúsculas automáticamente
+    document.getElementById('codigo').addEventListener('input', function() {
+        this.value = this.value.toUpperCase();
+    });
+</script>
+</body>
+</html>
