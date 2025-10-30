@@ -4,294 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artículos con Stock Bajo - Sistema de Inventario</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link rel="stylesheet" th:href="@{/estilos/stock-bajo.css}">
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .header .warning-icon {
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
-
-        .nav {
-            background: #f8f9fa;
-            padding: 20px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-            border-bottom: 3px solid #f5576c;
-        }
-
-        .nav a {
-            padding: 12px 24px;
-            background: #f5576c;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .nav a:hover {
-            background: #f093fb;
-            transform: translateY(-2px);
-        }
-
-        .content {
-            padding: 30px;
-        }
-
-        .alert-banner {
-            background: #fff3cd;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            border-left: 5px solid #ffc107;
-        }
-
-        .alert-banner h2 {
-            color: #856404;
-            margin-bottom: 10px;
-        }
-
-        .alert-banner p {
-            color: #856404;
-            font-size: 1.1em;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, #ffc107 0%, #ff6b6b 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .stat-card h3 {
-            font-size: 1.2em;
-            margin-bottom: 10px;
-            opacity: 0.9;
-        }
-
-        .stat-card .number {
-            font-size: 3em;
-            font-weight: bold;
-        }
-
-        .table-container {
-            overflow-x: auto;
-            margin-top: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-        }
-
-        th {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 15px;
-            text-align: left;
-            font-weight: 600;
-            position: sticky;
-            top: 0;
-        }
-
-        td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        tr:hover {
-            background: #fff3cd;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 600;
-        }
-
-        .badge-danger {
-            background: #dc3545;
-            color: white;
-        }
-
-        .badge-warning {
-            background: #ffc107;
-            color: #000;
-        }
-
-        .priority-high {
-            background: #ffe5e5;
-        }
-
-        .priority-medium {
-            background: #fff8e1;
-        }
-
-        .actions {
-            display: flex;
-            gap: 8px;
-        }
-
-        .btn {
-            padding: 6px 12px;
-            border: none;
-            border-radius: 6px;
-            font-size: 0.9em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            color: white;
-        }
-
-        .btn-info {
-            background: #17a2b8;
-        }
-
-        .btn-info:hover {
-            background: #138496;
-        }
-
-        .btn-warning {
-            background: #ffc107;
-            color: #000;
-        }
-
-        .btn-warning:hover {
-            background: #e0a800;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #6c757d;
-        }
-
-        .empty-state .icon {
-            font-size: 4em;
-            margin-bottom: 20px;
-        }
-
-        .empty-state h3 {
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            color: #28a745;
-        }
-
-        .faltante {
-            color: #dc3545;
-            font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            table {
-                font-size: 0.9em;
-            }
-        }
-    </style>
 </head>
 <body>
 <div class="container">
     <div class="header">
-        <div class="warning-icon">⚠️</div>
+        <div class="warning-icon">⚠</div>
         <h1>Artículos con Stock Bajo</h1>
         <p>Alertas de inventario que requieren atención inmediata</p>
     </div>
 
     <nav class="nav">
-        <a th:href="@{/}">🏠 Inicio</a>
-        <a th:href="@{/registrar}">➕ Registrar Artículo</a>
-        <a th:href="@{/consultar}">🔍 Consultar</a>
+        <a th:href="@{/}">Inicio</a>
+        <a th:href="@{/registrar}">Registrar Artículo</a>
+        <a th:href="@{/consultar}">Consultar</a>
     </nav>
 
     <div class="content">
-        <!-- Banner de alerta -->
+        <!-- Banner -->
         <div class="alert-banner" th:if="${articulos != null and !articulos.isEmpty()}">
-            <h2>⚠️ Atención Requerida</h2>
-            <p>
-                Actualmente hay <strong th:text="${total}">0</strong> artículo(s) con stock por debajo del mínimo.
-                Se recomienda realizar pedidos de reabastecimiento lo antes posible.
-            </p>
+            <h2>Atención Requerida</h2>
+            <p>Actualmente hay <strong th:text="${total}">0</strong> artículo(s) con stock por debajo del mínimo.</p>
         </div>
 
-        <!-- Estadísticas -->
-        <div class="stats" th:if="${articulos != null and !articulos.isEmpty()}">
-            <div class="stat-card">
-                <h3>Artículos en Alerta</h3>
-                <div class="number" th:text="${total}">0</div>
-            </div>
-            <div class="stat-card" style="background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);">
-                <h3>Prioridad Alta</h3>
-                <div class="number">
-                    <th:block th:with="sinStock=${#lists.size(#lists.select(articulos, 'stockActual == 0'))}">
-                        <span th:text="${sinStock}">0</span>
-                    </th:block>
-                </div>
-                <p style="font-size: 0.9em; margin-top: 10px;">Sin stock disponible</p>
-            </div>
-            <div class="stat-card" style="background: linear-gradient(135deg, #fd7e14 0%, #e8590c 100%);">
-                <h3>Prioridad Media</h3>
-                <div class="number">
-                    <th:block th:with="stockCritico=${total - #lists.size(#lists.select(articulos, 'stockActual == 0'))}">
-                        <span th:text="${stockCritico}">0</span>
-                    </th:block>
-                </div>
-                <p style="font-size: 0.9em; margin-top: 10px;">Stock crítico</p>
-            </div>
-        </div>
-
-        <!-- Tabla de artículos -->
+        <!-- Tabla -->
         <div class="table-container" th:if="${articulos != null and !articulos.isEmpty()}">
             <table>
                 <thead>
@@ -309,25 +46,23 @@
                 </thead>
                 <tbody>
                 <tr th:each="articulo : ${articulos}"
-                    th:classappend="${articulo.stockActual == 0} ? 'priority-high' : 'priority-medium'">
+                    th:classappend="${(articulo.stockActual ?: 0) == 0} ? 'priority-high' : 'priority-medium'">
+
                     <td>
-                        <span th:if="${articulo.stockActual == 0}" class="badge badge-danger">🔴 ALTA</span>
-                        <span th:if="${articulo.stockActual > 0}" class="badge badge-warning">🟡 MEDIA</span>
+                        <span th:if="${(articulo.stockActual ?: 0) == 0}" class="badge badge-danger">🔴 ALTA</span>
+                        <span th:if="${(articulo.stockActual ?: 0) > 0}" class="badge badge-warning">🟡 MEDIA</span>
                     </td>
                     <td><strong th:text="${articulo.codigo}"></strong></td>
                     <td th:text="${articulo.nombre}"></td>
                     <td th:text="${articulo.categoria}"></td>
-                    <td style="text-align: center;">
-                        <strong th:text="${articulo.stockActual}"></strong>
-                    </td>
-                    <td style="text-align: center;" th:text="${articulo.stockMinimo}"></td>
-                    <td style="text-align: center;" class="faltante">
-                        <span th:text="${articulo.stockMinimo - articulo.stockActual}"></span>
+                    <td style="text-align:center;" th:text="${articulo.stockActual}"></td>
+                    <td style="text-align:center;" th:text="${articulo.stockMinimo}"></td>
+                    <td style="text-align:center;" class="faltante">
+                        <span th:text="${(articulo.stockMinimo ?: 0) - (articulo.stockActual ?: 0)}"></span>
                     </td>
                     <td th:text="${articulo.proveedor != null ? articulo.proveedor : 'No especificado'}"></td>
                     <td>
                         <div class="actions">
-                            <a th:href="@{/articulo/{id}(id=${articulo.id})}" class="btn btn-info">Ver</a>
                             <a th:href="@{/editar/{id}(id=${articulo.id})}" class="btn btn-warning">Editar</a>
                         </div>
                     </td>
@@ -336,28 +71,12 @@
             </table>
         </div>
 
-        <!-- Estado sin alertas -->
+        <!-- Si no hay artículos -->
         <div class="empty-state" th:if="${articulos == null or articulos.isEmpty()}">
             <div class="icon">✅</div>
-            <h3>¡Todo en Orden!</h3>
+            <h3>¡Todo en orden!</h3>
             <p>No hay artículos con stock por debajo del mínimo.</p>
-            <p style="margin-top: 10px;">El inventario está en buen estado.</p>
-            <a th:href="@{/}" class="btn btn-info" style="margin-top: 20px; display: inline-block;">
-                Volver al Listado
-            </a>
-        </div>
-
-        <!-- Recomendaciones -->
-        <div th:if="${articulos != null and !articulos.isEmpty()}"
-             style="background: #e7f3ff; padding: 20px; border-radius: 10px; margin-top: 30px; border-left: 4px solid #17a2b8;">
-            <h3 style="color: #0c5460; margin-bottom: 15px;">💡 Recomendaciones</h3>
-            <ul style="color: #0c5460; line-height: 1.8;">
-                <li>Contacte a los proveedores lo antes posible para realizar pedidos.</li>
-                <li>Priorice los artículos con stock en 0 (prioridad ALTA).</li>
-                <li>Considere aumentar el stock mínimo para artículos de alta rotación.</li>
-                <li>Revise los tiempos de entrega con cada proveedor.</li>
-                <li>Mantenga comunicación constante con su equipo de ventas.</li>
-            </ul>
+            <a th:href="@{/}" class="btn btn-info" style="margin-top:20px;">Volver al Inicio</a>
         </div>
     </div>
 </div>
