@@ -1,30 +1,45 @@
 package com.ferreteria.inventario.cliente.soap;
 
-import javax.xml.soap.*;
-import javax.xml.transform.*;
-import javax.xml.transform.stream.StreamResult;
-import java.io.StringWriter;
+import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
 /**
- * Cliente SOAP para consumir los servicios web de gestión de artículos
- * Permite insertar y consultar artículos mediante SOAP (RF5, RF6, RNF10)
+ * Cliente SOAP SIMPLE - SIN necesidad de WSDL
+ * Usa Apache CXF JaxWsProxyFactory para conectarse directamente al servicio
+ *
+ * VENTAJAS:
+ * - No necesita parsear WSDL
+ * - Código más limpio y simple
+ * - Usa las interfaces Java directamente
+ *
+ * REQUISITO: Las clases del servidor deben estar accesibles
+ * (ArticuloSoapService, ArticuloRequest, ArticuloResponse)
  *
  * @author Sistema Ferretería
- * @version 1.0
+ * @version 4.0 - Cliente Simplificado
  */
 public class ClienteSOAP {
 
-    private static final String SOAP_ENDPOINT = "http://localhost:8080/ferreteria/soap/ArticuloService";
-    private static final String NAMESPACE_URI = "http://soap.inventario.ferreteria.com/";
+    private static final String SERVICE_URL = "http://localhost:8086/soap/ArticuloService";
+
     private static final Scanner scanner = new Scanner(System.in);
+
+    // Proxy del servicio SOAP
+    private static ArticuloSoapServiceProxy service;
 
     public static void main(String[] args) {
         System.out.println("╔═══════════════════════════════════════════════════════════╗");
         System.out.println("║    CLIENTE SOAP - SISTEMA DE INVENTARIO FERRETERÍA       ║");
+        System.out.println("║              (Versión Simplificada)                       ║");
         System.out.println("╚═══════════════════════════════════════════════════════════╝");
         System.out.println();
+
+        // Inicializar conexión
+        if (!conectarServicio()) {
+            System.err.println(" No se pudo conectar al servicio. Saliendo...");
+            return;
+        }
 
         boolean continuar = true;
         while (continuar) {
@@ -44,16 +59,16 @@ public class ClienteSOAP {
                 case 4:
                     verificarStock();
                     break;
-                case 5:
-                    System.out.println("\n✓ ¡Hasta luego!");
+                case 0:
+                    System.out.println("\n ¡Hasta luego!");
                     continuar = false;
                     break;
                 default:
-                    System.out.println("\n✗ Opción inválida. Intente nuevamente.");
+                    System.out.println("\n Opción inválida");
             }
 
             if (continuar) {
-                System.out.println("\nPresione Enter para continuar...");
+                System.out.println("\n📌 Presione Enter para continuar...");
                 scanner.nextLine();
             }
         }
@@ -62,8 +77,29 @@ public class ClienteSOAP {
     }
 
     /**
-     * Muestra el menú principal
+     * Conecta al servicio SOAP sin necesidad de WSDL
      */
+    private static boolean conectarServicio() {
+        try {
+            System.out.println(" Conectando al servicio SOAP...");
+            System.out.println(" URL: " + SERVICE_URL);
+
+            service = new ArticuloSoapServiceProxy(SERVICE_URL);
+
+            System.out.println(" Conexión establecida correctamente");
+            System.out.println();
+            return true;
+
+        } catch (Exception e) {
+            System.err.println(" Error al conectar: " + e.getMessage());
+            System.err.println("\n  Verificaciones:");
+            System.err.println("   1. ¿El servidor está ejecutándose?");
+            System.err.println("   2. ¿El puerto 8086 está disponible?");
+            System.err.println("   3. URL correcta: " + SERVICE_URL);
+            return false;
+        }
+    }
+
     private static void mostrarMenu() {
         System.out.println("\n═══════════════════════════════════════════════════════════");
         System.out.println("                    MENÚ PRINCIPAL");
@@ -72,14 +108,11 @@ public class ClienteSOAP {
         System.out.println("2. 🔍 Consultar artículo por código");
         System.out.println("3. ✏️  Actualizar artículo");
         System.out.println("4. 📦 Verificar stock disponible");
-        System.out.println("5. 🚪 Salir");
+        System.out.println("0. 🚪 Salir");
         System.out.println("═══════════════════════════════════════════════════════════");
-        System.out.print("Seleccione una opción: ");
+        System.out.print("➤ Seleccione una opción: ");
     }
 
-    /**
-     * Lee la opción del menú
-     */
     private static int leerOpcion() {
         try {
             return Integer.parseInt(scanner.nextLine());
@@ -89,7 +122,7 @@ public class ClienteSOAP {
     }
 
     /**
-     * Inserta un nuevo artículo mediante SOAP (RF5)
+     * 1. INSERTAR ARTÍCULO
      */
     private static void insertarArticulo() {
         System.out.println("\n╔══════════════════════════════════════════════════════════╗");
@@ -97,58 +130,47 @@ public class ClienteSOAP {
         System.out.println("╚══════════════════════════════════════════════════════════╝");
 
         try {
-            // Solicitar datos del artículo
-            System.out.print("\nCódigo (ej: MART-001): ");
-            String codigo = scanner.nextLine().toUpperCase();
+            ArticuloRequestDTO request = new ArticuloRequestDTO();
 
-            System.out.print("Nombre: ");
-            String nombre = scanner.nextLine();
+            System.out.print("\n Código (ej: MART-001): ");
+            request.codigo = scanner.nextLine().toUpperCase().trim();
 
-            System.out.print("Descripción: ");
-            String descripcion = scanner.nextLine();
+            System.out.print(" Nombre: ");
+            request.nombre = scanner.nextLine().trim();
 
-            System.out.print("Categoría: ");
-            String categoria = scanner.nextLine();
+            System.out.print(" Descripción: ");
+            request.descripcion = scanner.nextLine().trim();
 
-            System.out.print("Precio de Compra: ");
-            BigDecimal precioCompra = new BigDecimal(scanner.nextLine());
+            System.out.print(" Categoría: ");
+            request.categoria = scanner.nextLine().trim();
 
-            System.out.print("Precio de Venta: ");
-            BigDecimal precioVenta = new BigDecimal(scanner.nextLine());
+            System.out.print(" Precio de Compra: $");
+            request.precioCompra = new BigDecimal(scanner.nextLine().trim());
 
-            System.out.print("Stock Actual: ");
-            int stockActual = Integer.parseInt(scanner.nextLine());
+            System.out.print(" Precio de Venta: $");
+            request.precioVenta = new BigDecimal(scanner.nextLine().trim());
 
-            System.out.print("Stock Mínimo: ");
-            int stockMinimo = Integer.parseInt(scanner.nextLine());
+            System.out.print(" Stock Actual: ");
+            request.stockActual = Integer.parseInt(scanner.nextLine().trim());
 
-            System.out.print("Proveedor: ");
-            String proveedor = scanner.nextLine();
+            System.out.print(" Stock Mínimo: ");
+            request.stockMinimo = Integer.parseInt(scanner.nextLine().trim());
 
-            // Crear mensaje SOAP
-            SOAPMessage soapMessage = crearMensajeInsertarArticulo(
-                    codigo, nombre, descripcion, categoria,
-                    precioCompra, precioVenta, stockActual, stockMinimo, proveedor
-            );
+            System.out.print(" Proveedor: ");
+            request.proveedor = scanner.nextLine().trim();
 
-            // Enviar solicitud
-            System.out.println("\n⏳ Enviando solicitud al servidor SOAP...");
-            SOAPMessage respuesta = enviarMensajeSOAP(soapMessage);
+            System.out.println("\n Enviando solicitud...");
+            ArticuloResponseDTO response = service.insertarArticulo(request);
 
-            // Procesar respuesta
-            if (respuesta != null) {
-                System.out.println("\n✓ RESPUESTA DEL SERVIDOR:");
-                mostrarRespuestaSOAP(respuesta);
-            }
+            mostrarRespuesta(response, "ARTÍCULO INSERTADO");
 
         } catch (Exception e) {
-            System.err.println("\n✗ Error al insertar artículo: " + e.getMessage());
-            e.printStackTrace();
+            System.err.println("\n Error: " + e.getMessage());
         }
     }
 
     /**
-     * Consulta un artículo por código mediante SOAP (RF6)
+     * 2. CONSULTAR ARTÍCULO
      */
     private static void consultarArticulo() {
         System.out.println("\n╔══════════════════════════════════════════════════════════╗");
@@ -156,29 +178,21 @@ public class ClienteSOAP {
         System.out.println("╚══════════════════════════════════════════════════════════╝");
 
         try {
-            System.out.print("\nIngrese el código del artículo: ");
-            String codigo = scanner.nextLine().toUpperCase();
+            System.out.print("\n Código del artículo: ");
+            String codigo = scanner.nextLine().toUpperCase().trim();
 
-            // Crear mensaje SOAP
-            SOAPMessage soapMessage = crearMensajeConsultarArticulo(codigo);
+            System.out.println("\n Consultando...");
+            ArticuloResponseDTO response = service.consultarArticulo(codigo);
 
-            // Enviar solicitud
-            System.out.println("\n⏳ Consultando artículo...");
-            SOAPMessage respuesta = enviarMensajeSOAP(soapMessage);
-
-            // Procesar respuesta
-            if (respuesta != null) {
-                System.out.println("\n✓ INFORMACIÓN DEL ARTÍCULO:");
-                mostrarRespuestaSOAP(respuesta);
-            }
+            mostrarRespuesta(response, "INFORMACIÓN DEL ARTÍCULO");
 
         } catch (Exception e) {
-            System.err.println("\n✗ Error al consultar artículo: " + e.getMessage());
+            System.err.println("\n Error: " + e.getMessage());
         }
     }
 
     /**
-     * Actualiza un artículo existente
+     * 3. ACTUALIZAR ARTÍCULO
      */
     private static void actualizarArticulo() {
         System.out.println("\n╔══════════════════════════════════════════════════════════╗");
@@ -186,236 +200,214 @@ public class ClienteSOAP {
         System.out.println("╚══════════════════════════════════════════════════════════╝");
 
         try {
-            System.out.print("\nIngrese el código del artículo a actualizar: ");
-            String codigo = scanner.nextLine().toUpperCase();
+            System.out.print("\n🔍 Código del artículo: ");
+            String codigo = scanner.nextLine().toUpperCase().trim();
 
-            System.out.print("Nuevo nombre: ");
-            String nombre = scanner.nextLine();
+            ArticuloRequestDTO request = new ArticuloRequestDTO();
+            request.codigo = codigo;
 
-            System.out.print("Nueva descripción: ");
-            String descripcion = scanner.nextLine();
+            System.out.println("\n Nuevos datos:");
 
-            System.out.print("Nueva categoría: ");
-            String categoria = scanner.nextLine();
+            System.out.print("Nombre: ");
+            request.nombre = scanner.nextLine().trim();
 
-            System.out.print("Nuevo precio de compra: ");
-            BigDecimal precioCompra = new BigDecimal(scanner.nextLine());
+            System.out.print("Descripción: ");
+            request.descripcion = scanner.nextLine().trim();
 
-            System.out.print("Nuevo precio de venta: ");
-            BigDecimal precioVenta = new BigDecimal(scanner.nextLine());
+            System.out.print("Categoría: ");
+            request.categoria = scanner.nextLine().trim();
 
-            System.out.print("Nuevo stock actual: ");
-            int stockActual = Integer.parseInt(scanner.nextLine());
+            System.out.print("Precio de Compra: $");
+            request.precioCompra = new BigDecimal(scanner.nextLine().trim());
 
-            System.out.print("Nuevo stock mínimo: ");
-            int stockMinimo = Integer.parseInt(scanner.nextLine());
+            System.out.print("Precio de Venta: $");
+            request.precioVenta = new BigDecimal(scanner.nextLine().trim());
 
-            System.out.print("Nuevo proveedor: ");
-            String proveedor = scanner.nextLine();
+            System.out.print("Stock Actual: ");
+            request.stockActual = Integer.parseInt(scanner.nextLine().trim());
 
-            // Crear mensaje SOAP
-            SOAPMessage soapMessage = crearMensajeActualizarArticulo(
-                    codigo, nombre, descripcion, categoria,
-                    precioCompra, precioVenta, stockActual, stockMinimo, proveedor
-            );
+            System.out.print("Stock Mínimo: ");
+            request.stockMinimo = Integer.parseInt(scanner.nextLine().trim());
 
-            // Enviar solicitud
-            System.out.println("\n⏳ Actualizando artículo...");
-            SOAPMessage respuesta = enviarMensajeSOAP(soapMessage);
+            System.out.print("Proveedor: ");
+            request.proveedor = scanner.nextLine().trim();
 
-            // Procesar respuesta
-            if (respuesta != null) {
-                System.out.println("\n✓ ARTÍCULO ACTUALIZADO:");
-                mostrarRespuestaSOAP(respuesta);
-            }
+            System.out.println("\n Actualizando...");
+            ArticuloResponseDTO response = service.actualizarArticulo(codigo, request);
+
+            mostrarRespuesta(response, "ARTÍCULO ACTUALIZADO");
 
         } catch (Exception e) {
-            System.err.println("\n✗ Error al actualizar artículo: " + e.getMessage());
+            System.err.println("\n Error: " + e.getMessage());
         }
     }
 
     /**
-     * Verifica si hay stock disponible
+     * 4. VERIFICAR STOCK
      */
     private static void verificarStock() {
         System.out.println("\n╔══════════════════════════════════════════════════════════╗");
-        System.out.println("║              VERIFICAR STOCK DISPONIBLE                  ║");
+        System.out.println("║              VERIFICAR STOCK                             ║");
         System.out.println("╚══════════════════════════════════════════════════════════╝");
 
         try {
-            System.out.print("\nIngrese el código del artículo: ");
-            String codigo = scanner.nextLine().toUpperCase();
+            System.out.print("\n Código del artículo: ");
+            String codigo = scanner.nextLine().toUpperCase().trim();
 
-            // Crear mensaje SOAP
-            SOAPMessage soapMessage = crearMensajeVerificarStock(codigo);
+            System.out.println("\n Verificando...");
+            boolean disponible = service.verificarStock(codigo);
 
-            // Enviar solicitud
-            System.out.println("\n⏳ Verificando stock...");
-            SOAPMessage respuesta = enviarMensajeSOAP(soapMessage);
+            System.out.println("\n" + "═".repeat(60));
+            System.out.println("  RESULTADO DE VERIFICACIÓN");
+            System.out.println("═".repeat(60));
 
-            // Procesar respuesta
-            if (respuesta != null) {
-                System.out.println("\n✓ RESULTADO:");
-                mostrarRespuestaSOAP(respuesta);
+            if (disponible) {
+                System.out.println(" Stock disponible: SÍ");
+                System.out.println("   El artículo tiene stock suficiente");
+            } else {
+                System.out.println(" Stock disponible: NO");
+                System.out.println("    El artículo tiene stock bajo o no disponible");
             }
+            System.out.println("═".repeat(60));
 
         } catch (Exception e) {
-            System.err.println("\n✗ Error al verificar stock: " + e.getMessage());
-        }
-    }
-
-    // ==================== MÉTODOS DE CREACIÓN DE MENSAJES SOAP ====================
-
-    /**
-     * Crea mensaje SOAP para insertar artículo
-     */
-    private static SOAPMessage crearMensajeInsertarArticulo(
-            String codigo, String nombre, String descripcion, String categoria,
-            BigDecimal precioCompra, BigDecimal precioVenta,
-            int stockActual, int stockMinimo, String proveedor) throws Exception {
-
-        MessageFactory messageFactory = MessageFactory.newInstance();
-        SOAPMessage soapMessage = messageFactory.createMessage();
-        SOAPPart soapPart = soapMessage.getSOAPPart();
-
-        SOAPEnvelope envelope = soapPart.getEnvelope();
-        envelope.addNamespaceDeclaration("ns", NAMESPACE_URI);
-
-        SOAPBody soapBody = envelope.getBody();
-        SOAPElement operacion = soapBody.addChildElement("insertarArticulo", "ns");
-
-        SOAPElement request = operacion.addChildElement("articuloRequest", "ns");
-        request.addChildElement("codigo", "ns").addTextNode(codigo);
-        request.addChildElement("nombre", "ns").addTextNode(nombre);
-        request.addChildElement("descripcion", "ns").addTextNode(descripcion);
-        request.addChildElement("categoria", "ns").addTextNode(categoria);
-        request.addChildElement("precioCompra", "ns").addTextNode(precioCompra.toString());
-        request.addChildElement("precioVenta", "ns").addTextNode(precioVenta.toString());
-        request.addChildElement("stockActual", "ns").addTextNode(String.valueOf(stockActual));
-        request.addChildElement("stockMinimo", "ns").addTextNode(String.valueOf(stockMinimo));
-        request.addChildElement("proveedor", "ns").addTextNode(proveedor);
-
-        soapMessage.saveChanges();
-        return soapMessage;
-    }
-
-    /**
-     * Crea mensaje SOAP para consultar artículo
-     */
-    private static SOAPMessage crearMensajeConsultarArticulo(String codigo) throws Exception {
-        MessageFactory messageFactory = MessageFactory.newInstance();
-        SOAPMessage soapMessage = messageFactory.createMessage();
-        SOAPPart soapPart = soapMessage.getSOAPPart();
-
-        SOAPEnvelope envelope = soapPart.getEnvelope();
-        envelope.addNamespaceDeclaration("ns", NAMESPACE_URI);
-
-        SOAPBody soapBody = envelope.getBody();
-        SOAPElement operacion = soapBody.addChildElement("consultarArticulo", "ns");
-        operacion.addChildElement("codigo", "ns").addTextNode(codigo);
-
-        soapMessage.saveChanges();
-        return soapMessage;
-    }
-
-    /**
-     * Crea mensaje SOAP para actualizar artículo
-     */
-    private static SOAPMessage crearMensajeActualizarArticulo(
-            String codigo, String nombre, String descripcion, String categoria,
-            BigDecimal precioCompra, BigDecimal precioVenta,
-            int stockActual, int stockMinimo, String proveedor) throws Exception {
-
-        MessageFactory messageFactory = MessageFactory.newInstance();
-        SOAPMessage soapMessage = messageFactory.createMessage();
-        SOAPPart soapPart = soapMessage.getSOAPPart();
-
-        SOAPEnvelope envelope = soapPart.getEnvelope();
-        envelope.addNamespaceDeclaration("ns", NAMESPACE_URI);
-
-        SOAPBody soapBody = envelope.getBody();
-        SOAPElement operacion = soapBody.addChildElement("actualizarArticulo", "ns");
-        operacion.addChildElement("codigo", "ns").addTextNode(codigo);
-
-        SOAPElement request = operacion.addChildElement("articuloRequest", "ns");
-        request.addChildElement("codigo", "ns").addTextNode(codigo);
-        request.addChildElement("nombre", "ns").addTextNode(nombre);
-        request.addChildElement("descripcion", "ns").addTextNode(descripcion);
-        request.addChildElement("categoria", "ns").addTextNode(categoria);
-        request.addChildElement("precioCompra", "ns").addTextNode(precioCompra.toString());
-        request.addChildElement("precioVenta", "ns").addTextNode(precioVenta.toString());
-        request.addChildElement("stockActual", "ns").addTextNode(String.valueOf(stockActual));
-        request.addChildElement("stockMinimo", "ns").addTextNode(String.valueOf(stockMinimo));
-        request.addChildElement("proveedor", "ns").addTextNode(proveedor);
-
-        soapMessage.saveChanges();
-        return soapMessage;
-    }
-
-    /**
-     * Crea mensaje SOAP para verificar stock
-     */
-    private static SOAPMessage crearMensajeVerificarStock(String codigo) throws Exception {
-        MessageFactory messageFactory = MessageFactory.newInstance();
-        SOAPMessage soapMessage = messageFactory.createMessage();
-        SOAPPart soapPart = soapMessage.getSOAPPart();
-
-        SOAPEnvelope envelope = soapPart.getEnvelope();
-        envelope.addNamespaceDeclaration("ns", NAMESPACE_URI);
-
-        SOAPBody soapBody = envelope.getBody();
-        SOAPElement operacion = soapBody.addChildElement("verificarStock", "ns");
-        operacion.addChildElement("codigo", "ns").addTextNode(codigo);
-
-        soapMessage.saveChanges();
-        return soapMessage;
-    }
-
-    // ==================== MÉTODOS DE ENVÍO Y PROCESAMIENTO ====================
-
-    /**
-     * Envía un mensaje SOAP al servidor
-     */
-    private static SOAPMessage enviarMensajeSOAP(SOAPMessage soapMessage) {
-        try {
-            SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
-            SOAPConnection soapConnection = soapConnectionFactory.createConnection();
-
-            SOAPMessage soapResponse = soapConnection.call(soapMessage, SOAP_ENDPOINT);
-
-            soapConnection.close();
-            return soapResponse;
-
-        } catch (Exception e) {
-            System.err.println("\n✗ Error al comunicarse con el servidor SOAP:");
-            System.err.println("   " + e.getMessage());
-            System.err.println("\n⚠️  Asegúrese de que el servidor esté ejecutándose en: " + SOAP_ENDPOINT);
-            return null;
+            System.err.println("\n Error: " + e.getMessage());
         }
     }
 
     /**
-     * Muestra la respuesta SOAP formateada
+     * Muestra la respuesta del servicio formateada
      */
-    private static void mostrarRespuestaSOAP(SOAPMessage soapResponse) {
-        try {
-            System.out.println("\n" + "─".repeat(60));
+    private static void mostrarRespuesta(ArticuloResponseDTO response, String titulo) {
+        System.out.println("\n" + "═".repeat(60));
+        System.out.println("  " + titulo);
+        System.out.println("═".repeat(60));
 
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
-
-            Source sourceContent = soapResponse.getSOAPPart().getContent();
-            StringWriter writer = new StringWriter();
-            StreamResult result = new StreamResult(writer);
-            transformer.transform(sourceContent, result);
-
-            System.out.println(writer.toString());
+        if (response.mensaje != null && !response.mensaje.isEmpty()) {
+            System.out.println("📌 " + response.mensaje);
             System.out.println("─".repeat(60));
-
-        } catch (Exception e) {
-            System.err.println("Error al mostrar respuesta: " + e.getMessage());
         }
+
+        System.out.printf("🆔 ID:                %d%n", response.id);
+        System.out.printf("📝 Código:            %s%n", response.codigo);
+        System.out.printf("📦 Nombre:            %s%n", response.nombre);
+        System.out.printf("📄 Descripción:       %s%n", response.descripcion);
+        System.out.printf("📁 Categoría:         %s%n", response.categoria);
+        System.out.printf("💰 Precio Compra:     $%.2f%n", response.precioCompra);
+        System.out.printf("💵 Precio Venta:      $%.2f%n", response.precioVenta);
+        System.out.printf("📊 Stock Actual:      %d unidades%n", response.stockActual);
+        System.out.printf("⚠️  Stock Mínimo:      %d unidades%n", response.stockMinimo);
+        System.out.printf("🏢 Proveedor:         %s%n", response.proveedor);
+        System.out.printf("📈 Margen Ganancia:   %.2f%%%n", response.margenGanancia);
+
+        if (response.tieneStockBajo) {
+            System.out.println("\n ALERTA: Stock bajo detectado");
+        }
+
+        System.out.println("═".repeat(60));
+    }
+
+    // ==================== CLASES DTO SIMPLIFICADAS ====================
+
+    /**
+     * Proxy simplificado del servicio SOAP
+     */
+    static class ArticuloSoapServiceProxy {
+        private final com.ferreteria.inventario.soap.ArticuloSoapService service;
+
+        public ArticuloSoapServiceProxy(String serviceUrl) {
+            JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
+            factory.setServiceClass(com.ferreteria.inventario.soap.ArticuloSoapService.class);
+            factory.setAddress(serviceUrl);
+            this.service = (com.ferreteria.inventario.soap.ArticuloSoapService) factory.create();
+        }
+
+        public ArticuloResponseDTO insertarArticulo(ArticuloRequestDTO request) throws Exception {
+            com.ferreteria.inventario.soap.dto.ArticuloRequest req = convertirRequest(request);
+            com.ferreteria.inventario.soap.dto.ArticuloResponse resp = service.insertarArticulo(req);
+            return convertirResponse(resp);
+        }
+
+        public ArticuloResponseDTO consultarArticulo(String codigo) throws Exception {
+            com.ferreteria.inventario.soap.dto.ArticuloResponse resp = service.consultarArticulo(codigo);
+            return convertirResponse(resp);
+        }
+
+        public ArticuloResponseDTO actualizarArticulo(String codigo, ArticuloRequestDTO request) throws Exception {
+            com.ferreteria.inventario.soap.dto.ArticuloRequest req = convertirRequest(request);
+            com.ferreteria.inventario.soap.dto.ArticuloResponse resp = service.actualizarArticulo(codigo, req);
+            return convertirResponse(resp);
+        }
+
+        public boolean verificarStock(String codigo) throws Exception {
+            return service.verificarStock(codigo);
+        }
+
+        private com.ferreteria.inventario.soap.dto.ArticuloRequest convertirRequest(ArticuloRequestDTO dto) {
+            com.ferreteria.inventario.soap.dto.ArticuloRequest req =
+                    new com.ferreteria.inventario.soap.dto.ArticuloRequest();
+            req.setCodigo(dto.codigo);
+            req.setNombre(dto.nombre);
+            req.setDescripcion(dto.descripcion);
+            req.setCategoria(dto.categoria);
+            req.setPrecioCompra(dto.precioCompra);
+            req.setPrecioVenta(dto.precioVenta);
+            req.setStockActual(dto.stockActual);
+            req.setStockMinimo(dto.stockMinimo);
+            req.setProveedor(dto.proveedor);
+            return req;
+        }
+
+        private ArticuloResponseDTO convertirResponse(com.ferreteria.inventario.soap.dto.ArticuloResponse resp) {
+            ArticuloResponseDTO dto = new ArticuloResponseDTO();
+            dto.id = resp.getId();
+            dto.codigo = resp.getCodigo();
+            dto.nombre = resp.getNombre();
+            dto.descripcion = resp.getDescripcion();
+            dto.categoria = resp.getCategoria();
+            dto.precioCompra = resp.getPrecioCompra();
+            dto.precioVenta = resp.getPrecioVenta();
+            dto.stockActual = resp.getStockActual();
+            dto.stockMinimo = resp.getStockMinimo();
+            dto.proveedor = resp.getProveedor();
+            dto.margenGanancia = resp.getMargenGanancia();
+            dto.tieneStockBajo = resp.getTieneStockBajo();
+            dto.mensaje = resp.getMensaje();
+            return dto;
+        }
+    }
+
+    /**
+     * DTO para Request simplificado
+     */
+    static class ArticuloRequestDTO {
+        String codigo;
+        String nombre;
+        String descripcion;
+        String categoria;
+        BigDecimal precioCompra;
+        BigDecimal precioVenta;
+        int stockActual;
+        int stockMinimo;
+        String proveedor;
+    }
+
+    /**
+     * DTO para Response simplificado
+     */
+    static class ArticuloResponseDTO {
+        Long id;
+        String codigo;
+        String nombre;
+        String descripcion;
+        String categoria;
+        BigDecimal precioCompra;
+        BigDecimal precioVenta;
+        int stockActual;
+        int stockMinimo;
+        String proveedor;
+        BigDecimal margenGanancia;
+        boolean tieneStockBajo;
+        String mensaje;
     }
 }
